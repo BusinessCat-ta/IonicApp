@@ -10,7 +10,7 @@ export class ApiServiceService {
 
   constructor(private http: HttpClient) { }
 
-  getData(query: QueryModel){
-    return this.http.post("http://localhost:3000/role", query);
+  getData(request: QueryModel){
+    return this.http.post("http://localhost:3000/role", request);
   }
 }
