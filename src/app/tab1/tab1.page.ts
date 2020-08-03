@@ -1,6 +1,7 @@
 import { QueryModel } from './../../models/querymodel';
 import { ApiServiceService } from './../api-service.service';
 import { Component, OnInit } from '@angular/core';
+import {MenuController} from '@ionic/angular'
 
 @Component({
   selector: 'app-tab1',
@@ -12,7 +13,7 @@ export class Tab1Page implements OnInit{
 
   list: Object;
 
-  constructor(private Api: ApiServiceService) { }
+  constructor(private Api: ApiServiceService, private menu: MenuController) { }
 
   ngOnInit(): void {
     this.queryBuild();
@@ -25,6 +26,5 @@ export class Tab1Page implements OnInit{
     query.where = "leadstatus != 'null'";
     this.Api.getData(query).subscribe((data) => { this.list = data });
   }
-
 
 }
