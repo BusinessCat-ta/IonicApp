@@ -29,7 +29,7 @@ export class Tab1Page implements OnInit{
   }
 
   leadDet = (id: string) =>{
-    this.router.navigate(['/lead-details/'+id]);
+    this.router.navigate(['/lead-details/'+id.toString()]);
   }
 
 }
