@@ -1,3 +1,4 @@
+import { LeadDetails } from './../../models/LeadDetails';
 import { QueryModel } from './../../models/querymodel';
 import { ApiServiceService } from './../api-service.service';
 import { Component, OnInit } from '@angular/core';
