@@ -28,7 +28,7 @@ export class Tab1Page implements OnInit{
     this.Api.getData(query).subscribe((data) => { this.list = data });
   }
 
-  leadDet = (id: string) =>{
+  leadDet(id: string) {
     this.router.navigate(['/lead-details/'+id.toString()]);
   }
 
