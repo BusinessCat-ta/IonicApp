@@ -16,10 +16,22 @@
       <ion-title size="large">Tab 1</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-item>
+    <ion-label>Stato Lead</ion-label>
+    <ion-select value="" okText="Okay" cancelText="Annulla" interface="popover">
+      <ion-select-option value="N">Nuovi</ion-select-option>
+      <ion-select-option value="E">Scaduti</ion-select-option>
+      <ion-select-option value="O">Opportunità</ion-select-option>
+      <ion-select-option value="P">P</ion-select-option>
+    </ion-select>
+  </ion-item>
+
   <ion-list>
-    <ion-item *ngFor= "let s of list">
-      <ion-label>{{s.name}}</ion-label>
-      <ion-label>{{s.leadstatus}}</ion-label>
+    <ion-item button (click)="leadDet(s.c_bpartner_id)">
+      <ion-label>asd</ion-label>
+      <!-- <ion-label>{{s.name}}</ion-label>
+      <ion-label>{{s.leadstatus}}</ion-label> -->
     </ion-item>
   </ion-list>
 
@@ -28,8 +40,15 @@
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="top">
-      <ion-button>asd</ion-button>  
+      <ion-fab-button>
+        <ion-icon name="person-add-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button>
+        <ion-icon name="download-outline"></ion-icon>
+      </ion-fab-button>
     </ion-fab-list>
   </ion-fab>
+
+  
 
 </ion-content>
