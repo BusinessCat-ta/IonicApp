@@ -11,7 +11,7 @@ import { ActionSheetController } from '@ionic/angular';
 })
 export class LeadDetailsPage implements OnInit {
 
-  list: Object;
+  lead: Object;
 
   constructor(private route: ActivatedRoute, private Api: ApiServiceService,public actionSheetController: ActionSheetController) { }
 
@@ -22,7 +22,7 @@ export class LeadDetailsPage implements OnInit {
         query.column = "name, c_bpartner_id, ad_client_id, phone";
         query.table = "c_bpartner";
         query.where = "c_bpartner_id = "+id;
-        this.Api.getData(query).subscribe((data) => { this.list = data });
+        this.Api.getData(query).subscribe((data) => { this.lead = data });
     });
   }
 
