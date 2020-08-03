@@ -19,9 +19,9 @@ export class LeadDetailsPage implements OnInit {
     this.route.paramMap.subscribe(param => {
       const id = param.get('id');
         var query= new QueryModel;
-        query.column = "name, c_bpartner_id";
-        query.table = "c_bpartner";
-        query.where = "c_bpartner_id = "+id;
+        query.column = "name, email, phone";
+        query.table = "ad_user";
+        query.where = "ad_user_id = "+id;
         this.Api.getData(query).subscribe((data) => { this.lead = data });
     });
   }

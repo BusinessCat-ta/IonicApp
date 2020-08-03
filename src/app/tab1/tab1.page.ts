@@ -22,7 +22,7 @@ export class Tab1Page implements OnInit{
 
   queryBuild = () => {
     var query= new QueryModel;
-    query.column = "name, c_bpartner_id, ad_client_id, leadstatus, phone";
+    query.column = "name, c_bpartner_id, ad_user_id, leadstatus, phone";
     query.table = "ad_user";
     query.where = "leadstatus != 'null'";
     this.Api.getData(query).subscribe((data) => { this.list = data });

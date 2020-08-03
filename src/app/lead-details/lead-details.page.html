@@ -14,7 +14,7 @@
       </ion-label>      
     </ion-item-divider>
     <ion-item>
-      nome
+      {{lead.name}}
     </ion-item>
     <ion-item-divider>
       <ion-label>
@@ -22,7 +22,15 @@
       </ion-label>      
     </ion-item-divider>
     <ion-item>
-      phone
+      {{lead.phone}}
+    </ion-item>
+    <ion-item-divider>
+      <ion-label>
+        <h3>Telefono</h3>
+      </ion-label>      
+    </ion-item-divider>
+    <ion-item>
+      {{lead.email}}
     </ion-item>
     <ion-button expand="block" (click)="opzioniContatto()">
       Opzioni
