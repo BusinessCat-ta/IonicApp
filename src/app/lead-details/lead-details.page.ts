@@ -19,7 +19,7 @@ export class LeadDetailsPage implements OnInit {
     this.route.paramMap.subscribe(param => {
       const id = param.get('id');
         var query= new QueryModel;
-        query.column = "name, c_bpartner_id, phone";
+        query.column = "name, c_bpartner_id";
         query.table = "c_bpartner";
         query.where = "c_bpartner_id = "+id;
         this.Api.getData(query).subscribe((data) => { this.lead = data });
