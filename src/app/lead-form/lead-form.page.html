@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Lead</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+  <form (ngSubmit)="addLead()"> 
+    <ion-item>
+      <ion-label position="floating">Nome <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Cognome <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Telefono</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">E-mail</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-list>
+      <ion-radio-group value="LeadType">
+        <ion-list-header>
+          <ion-label>Provenienza Lead <ion-text color="danger">*</ion-text></ion-label>
+        </ion-list-header>
+        <ion-item>
+          <ion-label>Web</ion-label>
+          <ion-radio slot="start" value="Web"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Telefono</ion-label>
+          <ion-radio slot="start" value="Phone"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+    <ion-footer>
+      <ion-toolbar>
+        <ion-button expand="block" type="submit">Applica</ion-button>
+      </ion-toolbar>
+    </ion-footer>
+  </form>
+  
+</ion-content>

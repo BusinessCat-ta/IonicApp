@@ -4,6 +4,7 @@ import { ApiServiceService } from './../api-service.service';
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router'
 import { ActionSheetController } from '@ionic/angular';
+import {Router} from  '@angular/router'
 
 @Component({
   selector: 'app-lead-details',
@@ -14,7 +15,7 @@ export class LeadDetailsPage implements OnInit {
 
   lead: Object;
 
-  constructor(private route: ActivatedRoute, private Api: ApiServiceService,public actionSheetController: ActionSheetController) { }
+  constructor(private route: ActivatedRoute, private Api: ApiServiceService,public actionSheetController: ActionSheetController, private router: Router) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(param => {
@@ -37,6 +38,13 @@ export class LeadDetailsPage implements OnInit {
         icon: 'trash',
         handler: () => {
           console.log('Delete clicked');
+        }
+      
+      },{
+        text: 'Modifica Lead',
+        icon: 'cog-outline',
+        handler: () => {
+          this.router.navigate(['/lead-form/']);
         }
       }, {
         text: 'Telefona',

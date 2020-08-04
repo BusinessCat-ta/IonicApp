@@ -9,6 +9,10 @@ const routes: Routes = [
   {
     path: 'lead-details/:id',
     loadChildren: () => import('./lead-details/lead-details.module').then( m => m.LeadDetailsPageModule)
+  },
+  {
+    path: 'lead-form',
+    loadChildren: () => import('./lead-form/lead-form.module').then( m => m.LeadFormPageModule)
   }
 ];
 @NgModule({
