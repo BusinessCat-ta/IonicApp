@@ -8,14 +8,13 @@
 </ion-header>
 
 <ion-content>
-  <div *ngFor="let l of lead">
     <ion-item-divider>
       <ion-label>
         <h3>Nome</h3>
       </ion-label>      
     </ion-item-divider>
     <ion-item>
-      {{l.name}}
+      {{lead.name}}
     </ion-item>
     <ion-item-divider>
       <ion-label>
@@ -23,7 +22,7 @@
       </ion-label>      
     </ion-item-divider>
     <ion-item>
-      {{l.phone}}
+      {{lead.phone}}
     </ion-item>
     <ion-item-divider>
       <ion-label>
@@ -31,9 +30,8 @@
       </ion-label>      
     </ion-item-divider>
     <ion-item>
-      {{l.email}}
+      {{lead.email}}
     </ion-item>
-  </div>
     <ion-button expand="block" (click)="opzioniContatto()">
       Opzioni
     </ion-button>
