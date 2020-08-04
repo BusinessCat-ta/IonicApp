@@ -32,8 +32,8 @@ export class Tab1Page implements OnInit{
     this.router.navigate(['/lead-details/'+id.toString()]);
   }
 
-  addLead(){
-    this.router.navigate(['/lead-form/']);
+  addLead(id: string){
+    this.router.navigate(['/lead-form/'+id]);
   }
 
 }

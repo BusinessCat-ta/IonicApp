@@ -13,18 +13,20 @@ import {Router} from  '@angular/router'
 })
 export class LeadDetailsPage implements OnInit {
 
-  lead: Object;
+  lead: LeadDetails;
+  idLead: string;
 
   constructor(private route: ActivatedRoute, private Api: ApiServiceService,public actionSheetController: ActionSheetController, private router: Router) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(param => {
       const id = param.get('id');
+        this.idLead = id;
         var query= new QueryModel;
-        query.column = "name, email, phone";
+        query.column = "name, email, phone, ad_user_id";
         query.table = "ad_user";
         query.where = "ad_user_id = "+id;
-        this.Api.getData(query).subscribe((data) => { this.lead = data });
+        this.Api.getData(query).subscribe((data) => { this.lead = data[0] });
     });
   }
 
@@ -44,7 +46,7 @@ export class LeadDetailsPage implements OnInit {
         text: 'Modifica Lead',
         icon: 'cog-outline',
         handler: () => {
-          this.router.navigate(['/lead-form/']);
+          this.router.navigate(['/lead-form/'+ this.idLead]);
         }
       }, {
         text: 'Telefona',

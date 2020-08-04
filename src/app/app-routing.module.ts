@@ -11,7 +11,7 @@ const routes: Routes = [
     loadChildren: () => import('./lead-details/lead-details.module').then( m => m.LeadDetailsPageModule)
   },
   {
-    path: 'lead-form',
+    path: 'lead-form/:id',
     loadChildren: () => import('./lead-form/lead-form.module').then( m => m.LeadFormPageModule)
   }
 ];
