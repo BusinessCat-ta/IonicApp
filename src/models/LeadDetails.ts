@@ -1,4 +1,4 @@
-export interface LeadDetails {
+export class LeadDetails {
     name: string;
     email: string;
     phone: string;

@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Descrizione Offerta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-textarea autofocus="true" [(ngModel)]="desc"></ion-textarea>
+</ion-content>
+<ion-footer>
+  <ion-button expand="full" (click)="insertDesc()">Inserisci Offerta</ion-button>
+</ion-footer>

@@ -3,9 +3,9 @@
   <ion-menu side="start" menuId="first" contentId="main">
     <ion-header>
       <ion-toolbar color="primary">
-        <ion-title>Start Menu</ion-title>
+        <ion-title>CRM</ion-title>
         <ion-buttons slot="start">
-          <ion-menu-button autoHide="false"></ion-menu-button>
+          <ion-menu-button></ion-menu-button>
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
@@ -13,7 +13,8 @@
       <ion-list>
         <ion-item (click)="Direct('')">Leads</ion-item>
         <ion-item>Opportunità</ion-item>
-        <ion-item>Appuntamenti</ion-item>
+        <ion-item (click)="openCalendar()">Appuntamenti</ion-item>
+        <ion-item>Log Attività</ion-item>
       </ion-list>
     </ion-content>
   </ion-menu>

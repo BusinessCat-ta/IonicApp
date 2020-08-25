@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import {MenuController} from '@ionic/angular'
 import {Router} from '@angular/router'
 
+
+
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -14,10 +16,16 @@ export class Tab1Page implements OnInit{
 
   list: Object;
 
-  constructor(private Api: ApiServiceService, private menu: MenuController, private router: Router) { }
+  constructor(private Api: ApiServiceService, 
+              private menu: MenuController, 
+              private router: Router) { }
 
   ngOnInit(): void {
     this.queryBuild();
+    document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+      console.log((navigator as any).contacts);
+    }
   }
 
   queryBuild = () => {
@@ -35,5 +43,19 @@ export class Tab1Page implements OnInit{
   addLead(id: string){
     this.router.navigate(['/lead-form/'+id]);
   }
+
+  importContact(){
+    (navigator as any).contacts.pickContact(function(contact){
+      console.log('The following contact has been selected:' + JSON.stringify(contact));
+    },function(err){
+      console.log('Error: ' + err);
+    });
+  }
+
+  testTest(){
+    this.router.navigate(['/lead-details/1']);
+  }
+
+  
 
 }

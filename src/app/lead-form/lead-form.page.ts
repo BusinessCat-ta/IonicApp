@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { QueryModel } from './../../models/querymodel';
 import { ApiServiceService } from './../api-service.service';
 import { Component, OnInit, Query } from '@angular/core';
-import { ToastController } from '@ionic/angular';
+import { ToastController, NavController } from '@ionic/angular';
 import { Validators, FormBuilder, FormGroup, FormControl, FormsModule } from '@angular/forms';
 
 @Component({
@@ -16,28 +16,28 @@ export class LeadFormPage implements OnInit {
   constructor(private Api: ApiServiceService, 
               private toastController: ToastController, 
               public formbuilder: FormBuilder,
-              private route: ActivatedRoute
-              ) { }
+              private route: ActivatedRoute,
+              private navCtrl: NavController) { }
 
-    lead: LeadDetails;
+    lead= new LeadDetails;
     title: string;
   
   ngOnInit() {
     this.route.paramMap.subscribe(param => {
       const id = param.get('id');
-      if(id !== 'new'){
+      if(id != 'new'){
         this.title = "Modifica";
         var query= new QueryModel;
         query.column = "name, email, phone";
         query.table = "ad_user";
         query.where = "ad_user_id = "+id;
         this.Api.getData(query).subscribe((data) => { this.lead = data });
-    }else{
-      this.title = "Inserimento";
-      this.lead.name = "";
-      this.lead.email = "";
-      this.lead.phone = "";
-    }
+      }else{
+        this.title = "Inserimento";
+        this.lead.name = "";
+        this.lead.email = "";
+        this.lead.phone = "";
+      }
     });
     
   }
@@ -67,7 +67,7 @@ export class LeadFormPage implements OnInit {
   }
 
   addLead(){
-    alert("wewe");
-
+    this.ToastAccept();
+    this.navCtrl.back();
   }
 }

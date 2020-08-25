@@ -6,6 +6,11 @@ import {ActivatedRoute} from '@angular/router'
 import { ActionSheetController } from '@ionic/angular';
 import {Router} from  '@angular/router'
 
+import { CallNumber } from '@ionic-native/call-number/ngx';
+
+
+declare let cordova: any;
+
 @Component({
   selector: 'app-lead-details',
   templateUrl: './lead-details.page.html',
@@ -16,7 +21,11 @@ export class LeadDetailsPage implements OnInit {
   lead: LeadDetails;
   idLead: string;
 
-  constructor(private route: ActivatedRoute, private Api: ApiServiceService,public actionSheetController: ActionSheetController, private router: Router) { }
+  constructor(private route: ActivatedRoute, 
+              private Api: ApiServiceService,
+              public actionSheetController: ActionSheetController, 
+              private router: Router,
+              public callnumber: CallNumber) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(param => {
@@ -28,6 +37,17 @@ export class LeadDetailsPage implements OnInit {
         query.where = "ad_user_id = "+id;
         this.Api.getData(query).subscribe((data) => { this.lead = data[0] });
     });
+
+    document.addEventListener('deviceready', function () {
+      // cordova.plugins.email is now available
+    }, false);
+
+    cordova.plugins.email.isAvailable(
+      function (isAvailable) {
+          // alert('Service is not available') unless isAvailable;
+      }
+    );
+
   }
 
   async opzioniContatto() {
@@ -52,19 +72,21 @@ export class LeadDetailsPage implements OnInit {
         text: 'Telefona',
         icon: 'call-outline',
         handler: () => {
-          console.log('Share clicked');
+          this.callnumber.callNumber("18001010101", true)
+          .then(res => console.log('Launched dialer!', res))
+          .catch(err => console.log('Error launching dialer', err));
         }
       }, {
         text: 'Invia E-mail',
         icon: 'mail-outline',
         handler: () => {
-          console.log('Play clicked');
+          cordova.plugins.email.open(this.mail);
         }
       }, {
-        text: 'Promuovi a Opportunità',
+        text: 'Aggiungi Offerta',
         icon: 'cash-outline',
         handler: () => {
-          console.log('Favorite clicked');
+          this.router.navigate(['/descrizione/'+this.idLead]);
         }
       }, {
         text: 'Annulla',
@@ -77,5 +99,14 @@ export class LeadDetailsPage implements OnInit {
     });
     await actionSheet.present();
   }
+
+  mail = {
+    to: 'lezzini',
+    isHtml: true
+  }
+
+  
+
+
 
 }
