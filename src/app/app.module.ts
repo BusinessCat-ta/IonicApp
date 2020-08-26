@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy, Router } from '@angular/router';
+import {Underscore} from 'underscore'
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -24,7 +25,7 @@ import { AppComponent } from './app.component';
     IonicModule.forRoot(), 
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
     
   providers: [

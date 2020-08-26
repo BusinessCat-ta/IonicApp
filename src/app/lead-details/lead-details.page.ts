@@ -28,15 +28,6 @@ export class LeadDetailsPage implements OnInit {
               public callnumber: CallNumber) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(param => {
-      const id = param.get('id');
-        this.idLead = id;
-        var query= new QueryModel;
-        query.column = "name, email, phone, ad_user_id";
-        query.table = "ad_user";
-        query.where = "ad_user_id = "+id;
-        this.Api.getData(query).subscribe((data) => { this.lead = data[0] });
-    });
 
     document.addEventListener('deviceready', function () {
       // cordova.plugins.email is now available
@@ -47,6 +38,17 @@ export class LeadDetailsPage implements OnInit {
           // alert('Service is not available') unless isAvailable;
       }
     );
+
+    this.route.paramMap.subscribe(param => {
+      const id = param.get('id');
+        this.idLead = id;
+        var query= new QueryModel;
+        query.column = "name, email, phone, ad_user_id";
+        query.table = "ad_user";
+        query.where = "ad_user_id = "+id;
+        this.Api.getData(query).subscribe((data) => { this.lead = data[0] });
+    });
+
 
   }
 
@@ -73,7 +75,7 @@ export class LeadDetailsPage implements OnInit {
         icon: 'call-outline',
         handler: () => {
           this.callnumber.callNumber("18001010101", true)
-          .then(res => this.insertLog('Gibbone', 'Telefonata', Date.now() , 1))
+          .then(res => this.insertLog('Gibbone', 'Call', Date.now() , 1))
           .catch(err => console.log('Error launching dialer', err));
         }
       }, {

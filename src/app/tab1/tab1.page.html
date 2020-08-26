@@ -18,19 +18,24 @@
   </ion-header>
 
   <ion-item>
-    <ion-label>Stato Lead</ion-label>
-    <ion-select value="" okText="Okay" cancelText="Annulla" interface="popover">
-      <ion-select-option value="N">Nuovi</ion-select-option>
-      <ion-select-option value="E">Scaduti</ion-select-option>
-      <ion-select-option value="O">Opportunità</ion-select-option>
-      <ion-select-option value="P">P</ion-select-option>
-    </ion-select>
+    <ion-segment (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="N">
+        <ion-label>Nuovi</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="E">
+        <ion-label>Scaduti</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="W">
+        <ion-label>Promossi</ion-label>
+      </ion-segment-button>
+    </ion-segment>
   </ion-item>
 
-  <ion-list *ngFor="let s of list">
-    <ion-item button (click)="leadDet(s.ad_user_id)">
+  <ion-list>
+    <ion-item *ngFor="let s of list1" button (click)="leadDet(s.ad_user_id)">
       <ion-label>{{s.name}}</ion-label>
       <p>{{s.leadstatus}}</p>
+      <ion-icon name="play-outline"></ion-icon>
     </ion-item>
   </ion-list>
 

@@ -16,7 +16,7 @@ export class ApiServiceService {
   LogList = [];
 
   getData(request: QueryModel){
-    return this.http.post<LeadDetails>("http://localhost:3000/role", request);
+    return this.http.post<LeadDetails[]>("http://localhost:3000/role", request);
   }
 
   addLog(cliente: string, evento: string, data: number, id: number){

@@ -31,7 +31,7 @@ export class LeadFormPage implements OnInit {
         query.column = "name, email, phone";
         query.table = "ad_user";
         query.where = "ad_user_id = "+id;
-        this.Api.getData(query).subscribe((data) => { this.lead = data });
+        this.Api.getData(query).subscribe((data) => { this.lead = data[0] });
       }else{
         this.title = "Inserimento";
         this.lead.name = "";

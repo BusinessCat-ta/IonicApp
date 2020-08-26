@@ -10,7 +10,7 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let l of logs">
-      <ion-icon *ngIf="l.event == 'Telefonata'" name="call-sharp"></ion-icon>
+      <ion-icon *ngIf="l.event == 'Call'" name="call-sharp"></ion-icon>
       <ion-icon *ngIf="l.event == 'Email'" name="mail-sharp"></ion-icon>
       &nbsp;
       <ion-label>{{l.client}}</ion-label>

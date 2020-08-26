@@ -1,8 +1,11 @@
+import { LeadDetails } from './../../models/LeadDetails';
 import { QueryModel } from './../../models/querymodel';
 import { ApiServiceService } from './../api-service.service';
 import { Component, OnInit } from '@angular/core';
 import {MenuController} from '@ionic/angular'
 import {Router} from '@angular/router'
+import * as _ from 'underscore';
+
 
 
 
@@ -14,7 +17,8 @@ import {Router} from '@angular/router'
 export class Tab1Page implements OnInit{
 
 
-  list: Object;
+  list: LeadDetails[] = [];
+  list1: LeadDetails[] = [];
 
   constructor(private Api: ApiServiceService, 
               private menu: MenuController, 
@@ -30,10 +34,15 @@ export class Tab1Page implements OnInit{
 
   queryBuild = () => {
     var query= new QueryModel;
+    this.list = [];
+    this.list1 = [];
     query.column = "name, c_bpartner_id, ad_user_id, leadstatus, phone";
     query.table = "ad_user";
     query.where = "leadstatus != 'null'";
-    this.Api.getData(query).subscribe((data) => { this.list = data });
+    this.Api.getData(query).subscribe((data) => { 
+      this.list = data;
+      this.list1 = data;
+    });
   }
 
   leadDet(id: string) {
@@ -54,6 +63,10 @@ export class Tab1Page implements OnInit{
 
   testTest(){
     this.router.navigate(['/lead-details/1']);
+  }
+
+  segmentChanged(ev: any) {
+   this.list1=_.where(this.list, {leadstatus: ev.detail.value});
   }
 
   

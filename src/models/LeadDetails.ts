@@ -3,4 +3,6 @@ export class LeadDetails {
     email: string;
     phone: string;
     ad_user_id: string;
+    c_bpartner_id: string;
+    leadstatus: string;
 }
