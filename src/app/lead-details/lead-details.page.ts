@@ -73,14 +73,19 @@ export class LeadDetailsPage implements OnInit {
         icon: 'call-outline',
         handler: () => {
           this.callnumber.callNumber("18001010101", true)
-          .then(res => console.log('Launched dialer!', res))
+          .then(res => this.insertLog('Gibbone', 'Telefonata', Date.now() , 1))
           .catch(err => console.log('Error launching dialer', err));
         }
       }, {
         text: 'Invia E-mail',
         icon: 'mail-outline',
         handler: () => {
-          cordova.plugins.email.open(this.mail);
+          let mail = {
+            to: 'lezzini',
+            isHtml: true
+          }
+          cordova.plugins.email.open(mail);
+          this.insertLog('Anselmo','Email', Date.now() , 1);
         }
       }, {
         text: 'Aggiungi Offerta',
@@ -100,9 +105,9 @@ export class LeadDetailsPage implements OnInit {
     await actionSheet.present();
   }
 
-  mail = {
-    to: 'lezzini',
-    isHtml: true
+
+  insertLog(cliente: string, evento: string, data: number, id: number){
+    this.Api.addLog(cliente,evento, data, id);
   }
 
   

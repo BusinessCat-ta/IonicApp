@@ -1,3 +1,4 @@
+import { LogAgente } from './../models/LogModel';
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 
@@ -21,6 +22,7 @@ export class AppComponent {
   ) {
     this.initializeApp();
   }
+
 
   Direct(route: string){
     this.router.navigate(['/'+route]);

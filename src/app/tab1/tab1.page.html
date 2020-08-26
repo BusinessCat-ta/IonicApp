@@ -30,7 +30,7 @@
   <ion-list *ngFor="let s of list">
     <ion-item button (click)="leadDet(s.ad_user_id)">
       <ion-label>{{s.name}}</ion-label>
-      <ion-label>{{s.leadstatus}}</ion-label>
+      <p>{{s.leadstatus}}</p>
     </ion-item>
   </ion-list>
 
