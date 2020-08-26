@@ -38,7 +38,7 @@ export class Tab1Page implements OnInit{
     this.list1 = [];
     query.column = "name, c_bpartner_id, ad_user_id, leadstatus, phone";
     query.table = "ad_user";
-    query.where = "leadstatus != 'null'";
+    query.where = "leadstatus != 'null' and islead = 'Y'";
     this.Api.getData(query).subscribe((data) => { 
       this.list = data;
       this.list1 = data;
