@@ -8,30 +8,32 @@
 </ion-header>
 
 <ion-content>
+  <ion-item>
     <ion-item-divider>
       <ion-label>
         <h3>Nome</h3>
-      </ion-label>      
+      </ion-label>
+      <ion-item>
+        {{lead.name}}
+      </ion-item>   
     </ion-item-divider>
-    <ion-item>
-      asd
-    </ion-item>
     <ion-item-divider>
       <ion-label>
         <h3>Telefono</h3>
-      </ion-label>      
+      </ion-label> 
+      <ion-item>
+        {{lead.phone}}
+      </ion-item>     
     </ion-item-divider>
-    <ion-item>
-      asd
-    </ion-item>
     <ion-item-divider>
       <ion-label>
         <h3>Email</h3>
-      </ion-label>      
+      </ion-label> 
+      <ion-item>
+        {{lead.email}}
+      </ion-item>     
     </ion-item-divider>
-    <ion-item>
-      asd
-    </ion-item>
+  </ion-item>
 </ion-content>
 <ion-footer>
   <ion-button expand="full" (click)="opzioniContatto()">
