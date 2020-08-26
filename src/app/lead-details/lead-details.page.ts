@@ -74,8 +74,8 @@ export class LeadDetailsPage implements OnInit {
         text: 'Telefona',
         icon: 'call-outline',
         handler: () => {
-          this.callnumber.callNumber("18001010101", true)
-          .then(res => this.insertLog('Gibbone', 'Call', Date.now() , 1))
+          this.callnumber.callNumber( this.lead.phone , true)
+          .then(res => this.insertLog(this.lead.name , 'Call', Date.now() , 1))
           .catch(err => console.log('Error launching dialer', err));
         }
       }, {
@@ -83,11 +83,11 @@ export class LeadDetailsPage implements OnInit {
         icon: 'mail-outline',
         handler: () => {
           let mail = {
-            to: 'lezzini',
+            to: this.lead.email,
             isHtml: true
           }
           cordova.plugins.email.open(mail);
-          this.insertLog('Anselmo','Email', Date.now() , 1);
+          this.insertLog(this.lead.name,'Email', Date.now() , 1);
         }
       }, {
         text: 'Aggiungi Offerta',
