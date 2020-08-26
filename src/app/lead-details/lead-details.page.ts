@@ -18,7 +18,7 @@ declare let cordova: any;
 })
 export class LeadDetailsPage implements OnInit {
 
-  lead: LeadDetails;
+  lead = new LeadDetails();
   idLead: string;
 
   constructor(private route: ActivatedRoute, 
