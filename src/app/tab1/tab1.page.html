@@ -4,19 +4,20 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Leads
     </ion-title>
+    <ion-title>
     <ion-segment (ionChange)="segmentChanged($event)">
       <ion-segment-button value="N">
         <ion-label>Nuovi</ion-label>
       </ion-segment-button>
-      <ion-segment-button value="E">
-        <ion-label>Scaduti</ion-label>
-      </ion-segment-button>
       <ion-segment-button value="W">
         <ion-label>Promossi</ion-label>
       </ion-segment-button>
+      <ion-segment-button value="E">
+        <ion-label>Scaduti</ion-label>
+      </ion-segment-button>
     </ion-segment>
+  </ion-title>
   </ion-toolbar>
 </ion-header>
 

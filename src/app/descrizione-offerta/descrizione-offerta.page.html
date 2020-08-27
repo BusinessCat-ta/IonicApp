@@ -8,8 +8,8 @@
 </ion-header>
 
 <ion-content>
-  <ion-textarea autofocus="true" [(ngModel)]="desc"></ion-textarea>
+  <ion-textarea autofocus="true" #desc></ion-textarea>
 </ion-content>
 <ion-footer>
-  <ion-button expand="full" (click)="insertDesc()">Inserisci Offerta</ion-button>
+  <ion-button expand="full" (click)="insertDesc(desc.value)">Inserisci Offerta</ion-button>
 </ion-footer>

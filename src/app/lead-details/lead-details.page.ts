@@ -3,7 +3,7 @@ import { QueryModel } from './../../models/querymodel';
 import { ApiServiceService } from './../api-service.service';
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router'
-import { ActionSheetController } from '@ionic/angular';
+import { ActionSheetController,  AlertController } from '@ionic/angular';
 import {Router} from  '@angular/router'
 
 import { CallNumber } from '@ionic-native/call-number/ngx';
@@ -25,7 +25,8 @@ export class LeadDetailsPage implements OnInit {
               private Api: ApiServiceService,
               public actionSheetController: ActionSheetController, 
               private router: Router,
-              public callnumber: CallNumber) { }
+              public callnumber: CallNumber,
+              public alertcontrol: AlertController) { }
 
   ngOnInit() {
 
@@ -61,7 +62,7 @@ export class LeadDetailsPage implements OnInit {
         role: 'destructive',
         icon: 'trash',
         handler: () => {
-          console.log('Delete clicked');
+          this.deleteLead();
         }
       
       },{
@@ -105,6 +106,31 @@ export class LeadDetailsPage implements OnInit {
       }]
     });
     await actionSheet.present();
+  }
+
+  async deleteLead(){
+    const alert = await this.alertcontrol.create({
+      cssClass: '',
+      header: 'Elimina Lead',
+      message: 'Sei sicuro?',
+      buttons: [
+        {
+          text: 'Annulla',
+          role: 'cancel',
+          cssClass: '',
+          handler: () => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Elimina',
+          handler: () => {
+            console.log('Confirm Okay');
+          }
+        },
+      ]
+    });
+
+    await alert.present();
   }
 
 

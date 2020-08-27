@@ -17,7 +17,7 @@
         {{lead.name}}
       </ion-item>   
     </ion-item-divider>
-    <ion-item-divider>
+    <ion-item-divider *ngIf="lead.phone">
       <ion-label>
         <h3>Telefono</h3>
       </ion-label> 
@@ -25,7 +25,7 @@
         {{lead.phone}}
       </ion-item>     
     </ion-item-divider>
-    <ion-item-divider>
+    <ion-item-divider *ngIf="lead.email">
       <ion-label>
         <h3>Email</h3>
       </ion-label> 

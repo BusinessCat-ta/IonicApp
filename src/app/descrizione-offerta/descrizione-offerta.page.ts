@@ -9,16 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class DescrizioneOffertaPage implements OnInit {
 
   
-  desc ="";
-  
   constructor(private navCtrl: NavController) { }
 
   ngOnInit() {
   }
 
 
-  insertDesc(){
-    alert(this.desc);
+  insertDesc(desc: string){
+    alert(desc);
     this.navCtrl.back();
   }
 
