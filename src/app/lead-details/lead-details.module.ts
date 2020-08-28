@@ -1,3 +1,4 @@
+import { LogComponent } from './../log/log.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +16,6 @@ import { LeadDetailsPage } from './lead-details.page';
     IonicModule,
     LeadDetailsPageRoutingModule
   ],
-  declarations: [LeadDetailsPage]
+  declarations: [LeadDetailsPage,LogComponent]
 })
 export class LeadDetailsPageModule {}

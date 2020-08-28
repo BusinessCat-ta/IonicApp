@@ -1,3 +1,5 @@
+import { ActivatedRoute } from '@angular/router';
+import { ApiServiceService } from './../api-service.service';
 import { NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,15 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DescrizioneOffertaPage implements OnInit {
 
-  
-  constructor(private navCtrl: NavController) { }
+  leadname="";
+
+  constructor(private navCtrl: NavController,
+              private Api: ApiServiceService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
+
+    this.route.paramMap.subscribe(param => {
+      const id = param.get('id');
+      this.leadname = id;
+    });
+
   }
 
 
   insertDesc(desc: string){
     alert(desc);
+    this.Api.addLog(this.leadname, "Offer", Date.now(), 1);
     this.navCtrl.back();
   }
 

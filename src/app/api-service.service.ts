@@ -1,3 +1,5 @@
+import { FornitoriModel } from './../models/FornitoriModel';
+import { Task } from './../models/TaskLog';
 import { LogAgente } from './../models/LogModel';
 import { LeadDetails } from './../models/LeadDetails';
 import { QueryModel } from './../models/querymodel';
@@ -17,6 +19,14 @@ export class ApiServiceService {
 
   getData(request: QueryModel){
     return this.http.post<LeadDetails[]>("http://192.168.178.101:3000/role", request);
+  }
+
+  getTask(request: QueryModel){
+    return this.http.post<Task[]>("http://192.168.178.101:3000/role", request);
+  }
+
+  getSuppliers(request: QueryModel){
+    return this.http.post<FornitoriModel[]>("http://192.168.178.101:3000/role", request);
   }
 
   addLog(cliente: string, evento: string, data: number, id: number){

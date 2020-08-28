@@ -12,22 +12,18 @@
 <ion-content>
   <form (ngSubmit)="addLead()"> 
     <ion-item>
-      <ion-label position="floating">Nome <ion-text color="danger">*</ion-text></ion-label>
-      <ion-input required="true"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Cognome</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-label position="floating">Nome Lead<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required="true" [(ngModel)]="lead.name" name="name" clearOnEdit="true"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Telefono</ion-label>
-      <ion-input type="tel" inputmode="numeric"></ion-input>
+      <ion-input type="tel" inputmode="numeric" [(ngModel)]="lead.phone" name="phone" clearOnEdit="true"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">E-mail</ion-label>
-      <ion-input type="email" inputmode="email"></ion-input>
+      <ion-input type="email" inputmode="email" [(ngModel)]="lead.email" name="email" clearOnEdit="true"></ion-input>
     </ion-item>
-    <ion-list>
+    <ion-list *ngIf="title == 'Inserimento'">
       <ion-radio-group name="LeadOrigin">
         <ion-list-header>
           <ion-label>Provenienza Lead <ion-text color="danger">*</ion-text></ion-label>

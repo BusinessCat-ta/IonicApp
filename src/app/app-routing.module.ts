@@ -24,16 +24,20 @@ const routes: Routes = [
     loadChildren: () => import('./interventi-page/interventi-page.module').then( m => m.InterventiPagePageModule)
   },
   {
-    path: 'NavPage',
-    loadChildren: () => import('./interventi-page/nav-page/nav-page.module').then( m => m.NavPagePageModule)
-  },
-  {
     path: 'descrizione/:id',
     loadChildren: () => import('./descrizione-offerta/descrizione-offerta.module').then( m => m.DescrizioneOffertaPageModule)
   },
   {
     path: 'log-page',
     loadChildren: () => import('./log-page/log-page.module').then( m => m.LogPagePageModule)
+  },
+  {
+    path: 'task',
+    loadChildren: () => import('./task/task.module').then( m => m.TaskPageModule)
+  },
+  {
+    path: 'fornitori',
+    loadChildren: () => import('./fornitori/fornitori.module').then( m => m.FornitoriPageModule)
   }
 ];
 @NgModule({

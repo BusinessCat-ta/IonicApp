@@ -15,7 +15,7 @@ export class LeadFormPage implements OnInit {
 
   constructor(private Api: ApiServiceService, 
               private toastController: ToastController, 
-              public formbuilder: FormBuilder,
+              public fb: FormBuilder,
               private route: ActivatedRoute,
               private navCtrl: NavController) { }
 
@@ -42,11 +42,6 @@ export class LeadFormPage implements OnInit {
     
   }
 
-  insertForm = new FormGroup({
-    name: new FormControl('', Validators.required),
-    country: new FormControl('', Validators.required),
-    email: new FormControl('',Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'))
- })
 
   async ToastError() {
     const toast = await this.toastController.create({
@@ -67,6 +62,11 @@ export class LeadFormPage implements OnInit {
   }
 
   addLead(){
+    let newLead = new LeadDetails;
+    newLead.name = this.lead.name;
+    newLead.phone = this.lead.phone;
+    newLead.email = this.lead.email;
+    alert(newLead.email);
     this.ToastAccept();
     this.navCtrl.back();
   }

@@ -94,7 +94,7 @@ export class LeadDetailsPage implements OnInit {
         text: 'Aggiungi Offerta',
         icon: 'cash-outline',
         handler: () => {
-          this.router.navigate(['/descrizione/'+this.idLead]);
+          this.router.navigate(['/descrizione/'+this.lead.name]);
         }
       }, {
         text: 'Annulla',

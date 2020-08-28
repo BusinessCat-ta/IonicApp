@@ -61,10 +61,6 @@ export class Tab1Page implements OnInit{
     });
   }
 
-  testTest(){
-    this.router.navigate(['/lead-details/1']);
-  }
-
   segmentChanged(ev: any) {
    this.list1=_.where(this.list, {leadstatus: ev.detail.value});
   }

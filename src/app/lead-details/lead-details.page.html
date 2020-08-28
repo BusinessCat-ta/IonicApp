@@ -7,10 +7,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content scrollY="false">
   <ion-list>
     <ion-item-divider>
-      <ion-label>
+      <ion-label position="stacked">
         <h3>Nome</h3>
       </ion-label>
       <ion-item>
@@ -34,6 +34,7 @@
       </ion-item>     
     </ion-item-divider>
   </ion-list>
+  <app-log></app-log>
 </ion-content>
 <ion-footer>
   <ion-button expand="full" (click)="opzioniContatto()">

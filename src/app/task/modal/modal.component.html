@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Dettaglio Task</ion-title>
+    <ion-button slot="end" fill="clear" (click)="closeModal()">
+      <ion-icon name="close-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{task.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{task.description}}
+    </ion-card-content>
+  </ion-card>
+</ion-content>
