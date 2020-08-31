@@ -12,11 +12,10 @@
       <ion-content>
         <ion-list>
           <ion-item (click)="Direct('')">Leads</ion-item>
-          <ion-item>Opportunità</ion-item>
+          <ion-item (click)="Direct('/opportunita')">Opportunità</ion-item>
           <ion-item (click)="Direct('task')">Task</ion-item>
           <ion-item (click)="openCalendar()">Appuntamenti</ion-item>
-          <ion-item (click)="Direct('/log-page')">Log Attività</ion-item>
-          <ion-item (click)="Direct('/fornitori')">Fornitori e Clienti</ion-item>
+          <ion-item (click)="Direct('/fornitori')">Contatti Clienti e Fornitori</ion-item>
         </ion-list>
       </ion-content>
     </ion-menu>

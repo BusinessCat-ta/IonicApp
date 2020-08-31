@@ -1,3 +1,4 @@
+import { Opportunity } from './../models/OpportunityModel';
 import { FornitoriModel } from './../models/FornitoriModel';
 import { Task } from './../models/TaskLog';
 import { LogAgente } from './../models/LogModel';
@@ -27,6 +28,10 @@ export class ApiServiceService {
 
   getSuppliers(request: QueryModel){
     return this.http.post<FornitoriModel[]>("http://192.168.178.101:3000/role", request);
+  }
+
+  getOpp(request: QueryModel){
+    return this.http.post<Opportunity[]>("http://192.168.178.101:3000/role", request);
   }
 
   addLog(cliente: string, evento: string, data: number, id: number){

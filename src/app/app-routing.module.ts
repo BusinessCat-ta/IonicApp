@@ -1,12 +1,8 @@
-import { NavPagePageModule } from './interventi-page/nav-page/nav-page.module';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {
-    path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  },
+
   {
     path: 'lead-details/:id',
     loadChildren: () => import('./lead-details/lead-details.module').then( m => m.LeadDetailsPageModule)
@@ -16,7 +12,7 @@ const routes: Routes = [
     loadChildren: () => import('./lead-form/lead-form.module').then( m => m.LeadFormPageModule)
   },
   {
-    path: 'crm-page',
+    path: '',
     loadChildren: () => import('./crm-page/crm-page.module').then( m => m.CrmPagePageModule)
   },
   {
@@ -38,6 +34,14 @@ const routes: Routes = [
   {
     path: 'fornitori',
     loadChildren: () => import('./fornitori/fornitori.module').then( m => m.FornitoriPageModule)
+  },
+  {
+    path: 'opportunita',
+    loadChildren: () => import('./opportunita/opportunita.module').then( m => m.OpportunitaPageModule)
+  },
+  {
+    path: 'login-page',
+    loadChildren: () => import('./login-page/login-page.module').then( m => m.LoginPagePageModule)
   }
 ];
 @NgModule({

@@ -30,10 +30,10 @@ export class TaskPage implements OnInit {
     query.column = "ad_client_id, description, ad_user_id, salesrep_id, name, priority";
     query.table = "c_contactactivity";
     query.where = "ismobileenabled = 'Y'";
-    this.Api.getTask(query).subscribe((data) => {
+    this.Api.getTask(query).subscribe((data)=>{
       this.list = data;
+      this.list1 = _.sortBy(this.list, x => x.priority)
     });
-    this.list1 = _.sortBy(this.list, x => -x.priority)
   }
 
   openModal(tsk: Task) {
