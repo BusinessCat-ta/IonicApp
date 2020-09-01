@@ -36,9 +36,11 @@ export function tokenGetter() {
     BrowserModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: localStorage.token,
+        tokenGetter: tokenGetter,
         allowedDomains: ["http://localhost:8080"],
         disallowedRoutes: ["http://example.com/examplebadroute/"],
+        headerName: "Bearer",
+        authScheme: "Basic"
       },
     }),
   ],

@@ -17,17 +17,13 @@ export class LoginPagePage implements OnInit {
   ngOnInit() {
   }
 
-  token= new TResponse;
-
   cred =  new Credentials;
 
   Login(username: string, password: string){
     this.cred.username = username;
     this.cred.password = password;
     this.Api.logMeIn(this.cred).subscribe((data) => {
-      this.token = data;
-      localStorage.token = this.token.token;
-      console.log(this.token)
+      localStorage.setItem("token", data.token)
       this.router.navigate(['/crm']);
     });
   }
