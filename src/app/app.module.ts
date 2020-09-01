@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy, Router } from '@angular/router';
 import { CommonModule } from '@angular/common'
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
-import { IonicStorageModule } from '@ionic/storage';
+import { IonicStorageModule, Storage } from '@ionic/storage';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
