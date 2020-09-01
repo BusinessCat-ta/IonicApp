@@ -26,9 +26,10 @@ export class LoginPagePage implements OnInit {
     this.cred.password = password;
     this.Api.logMeIn(this.cred).subscribe((data) => {
       this.token = data;
+      localStorage.token = this.token.token;
+      console.log(this.token)
       this.router.navigate(['/crm']);
     });
-    localStorage.token = this.token.token;
   }
 
 }
