@@ -33,13 +33,13 @@ export class CrmPagePage implements OnInit{
   }
 
   queryBuild = () => {
-    var query= new QueryModel;
+    /* var query= new QueryModel; */
     this.list = [];
     this.list1 = [];
-    query.column = "name, c_bpartner_id, ad_user_id, leadstatus, phone";
+    /* query.column = "name, c_bpartner_id, ad_user_id, leadstatus, phone";
     query.table = "ad_user";
-    query.where = "leadstatus != 'null' and issaleslead = 'Y'";
-    this.Api.getData(query).subscribe((data) => { 
+    query.where = "leadstatus != 'null' and issaleslead = 'Y'"; */
+    this.Api.getData().subscribe((data) => { 
       this.list = data;
       this.list1 = data;
     });

@@ -20,8 +20,8 @@ export class ApiServiceService {
 
   LogList = [];
 
-  getData(request: QueryModel){
-    return this.http.post<LeadDetails[]>("http://192.168.178.101:3000/role", request);
+  getData(){
+    return this.http.get<LeadDetails[]>("http://localhost:8080/services/api/idempierepara/web/search/getLead");
   }
 
   getTask(request: QueryModel){
