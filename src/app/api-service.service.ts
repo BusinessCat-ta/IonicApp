@@ -1,3 +1,4 @@
+import { TResponse } from './../models/TokenResponse';
 import { Credentials } from './../models/Credentials';
 import { Opportunity } from './../models/OpportunityModel';
 import { FornitoriModel } from './../models/FornitoriModel';
@@ -49,6 +50,7 @@ export class ApiServiceService {
   }
 
   logMeIn(cred: Credentials){
-    return this.http.post("http://localhost:8080/services/api/auth/login", cred);
+    console.log(cred);
+    return this.http.post<TResponse>("http://localhost:8080/services/api/auth/login", cred);
   }
 }

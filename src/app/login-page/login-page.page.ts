@@ -1,3 +1,4 @@
+import { TResponse } from './../../models/TokenResponse';
 import { Router } from '@angular/router';
 import { Credentials } from './../../models/Credentials';
 import { ApiServiceService } from './../api-service.service';
@@ -16,15 +17,18 @@ export class LoginPagePage implements OnInit {
   ngOnInit() {
   }
 
+  token= new TResponse;
+
   cred =  new Credentials;
 
   Login(username: string, password: string){
     this.cred.username = username;
     this.cred.password = password;
     this.Api.logMeIn(this.cred).subscribe((data) => {
-      localStorage.token = data;
-      this.router.navigate(['/crm'])
+      this.token = data;
+      this.router.navigate(['/crm']);
     });
+    localStorage.token = this.token.token;
   }
 
 }

@@ -14,7 +14,7 @@
                 <ion-label position="floating">Password</ion-label>
                 <ion-input type="password" #password></ion-input>
               </ion-item>
-              <ion-button expand="block" shape="round" (click)="Login(username, password)">
+              <ion-button expand="block" shape="round" (click)="Login(username.value, password.value)">
                 Login
               </ion-button>
               <ion-item>
