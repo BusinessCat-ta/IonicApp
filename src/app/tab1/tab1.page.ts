@@ -33,7 +33,7 @@ export class Tab1Page implements OnInit{
   }
 
   queryBuild = () => {
-    var query= new QueryModel;
+   /*  var query= new QueryModel;
     this.list = [];
     this.list1 = [];
     query.column = "name, c_bpartner_id, ad_user_id, leadstatus, phone";
@@ -42,7 +42,7 @@ export class Tab1Page implements OnInit{
     this.Api.getData(query).subscribe((data) => { 
       this.list = data;
       this.list1 = data;
-    });
+    }); */
   }
 
   leadDet(id: string) {

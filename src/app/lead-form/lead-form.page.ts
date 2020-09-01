@@ -23,7 +23,7 @@ export class LeadFormPage implements OnInit {
     title: string;
   
   ngOnInit() {
-    this.route.paramMap.subscribe(param => {
+    /* this.route.paramMap.subscribe(param => {
       const id = param.get('id');
       if(id != 'new'){
         this.title = "Modifica";
@@ -38,7 +38,7 @@ export class LeadFormPage implements OnInit {
         this.lead.email = "";
         this.lead.phone = "";
       }
-    });
+    }); */
     
   }
 
