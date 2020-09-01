@@ -41,13 +41,13 @@ export class LeadDetailsPage implements OnInit {
     );
 
     this.route.paramMap.subscribe(param => {
-      const id = param.get('id');
+      /* const id = param.get('id');
         this.idLead = id;
         var query= new QueryModel;
         query.column = "name, email, phone, ad_user_id";
         query.table = "ad_user";
         query.where = "ad_user_id = "+id;
-        this.Api.getData(query).subscribe((data) => { this.lead = data[0] });
+        this.Api.getData(query).subscribe((data) => { this.lead = data[0] }); */
     });
 
 
