@@ -17,10 +17,6 @@ import { Calendar } from '@ionic-native/calendar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-export function tokenGetter() {
-  return localStorage.getItem("token");
-}
-
 
 @NgModule({
   declarations: [AppComponent, LogComponent],
@@ -36,10 +32,10 @@ export function tokenGetter() {
     BrowserModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: tokenGetter,
-        allowedDomains: ["http://localhost:8080"],
-        disallowedRoutes: ["http://example.com/examplebadroute/"],
-        authScheme: "Bearer "
+        tokenGetter: () => {
+          return localStorage.getItem("token");
+        },
+        allowedDomains: ["http://localhost:8080/services"]
       },
     }),
   ],
