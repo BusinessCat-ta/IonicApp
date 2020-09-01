@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy, Router } from '@angular/router';
 import { CommonModule } from '@angular/common'
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
-import { Storage } from '@ionic/storage';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -25,7 +25,7 @@ export function jwtOptionsFactory(storage) {
       return storage.get('token');
     },
     allowedDomains: ["http://localhost:8080/services"],
-    disallowedroutes: ["http://localhost:8100"]
+    disallowedRoutes: ["http://localhost:8100"]
   }
 }
 
@@ -46,7 +46,7 @@ export function jwtOptionsFactory(storage) {
       jwtOptionsProvider: {
         provide: JWT_OPTIONS,
         useFactory: jwtOptionsFactory,
-        deps: [Storage]
+        deps: [IonicStorageModule]
       }
     }),
   ],
