@@ -1,3 +1,6 @@
+import { Router } from '@angular/router';
+import { Credentials } from './../../models/Credentials';
+import { ApiServiceService } from './../api-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPagePage implements OnInit {
 
-  constructor() { }
+  constructor(private Api: ApiServiceService,
+              private router: Router) { }
 
   ngOnInit() {
+  }
+
+  cred =  new Credentials;
+
+  Login(username: string, password: string){
+    this.cred.username = username;
+    this.cred.password = password;
+    this.Api.logMeIn(this.cred).subscribe((data) => {
+      localStorage.token = data;
+      this.router.navigate(['/crm'])
+    });
   }
 
 }

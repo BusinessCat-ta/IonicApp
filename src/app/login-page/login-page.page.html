@@ -1,30 +1,29 @@
-<ion-content>
-  <ion-grid fixed="true" style="background-color: red;">
-    <ion-row class="ion-align-items-center" style="background-color: green;">
+  <ion-grid fixed="true">
+    <ion-row  class="fullheight xc">
       <ion-col size="12">
         <ion-card>
           <ion-card-header>
             <ion-card-title class="ion-text-center">Login</ion-card-title>
+          </ion-card-header>
             <ion-card-content>
               <ion-item>
                 <ion-label position="floating">Username</ion-label>
-                <ion-input type="text"></ion-input>
+                <ion-input type="text" #username></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Password</ion-label>
-                <ion-input type="password"></ion-input>
+                <ion-input type="password" #password></ion-input>
               </ion-item>
-              <ion-button expand="block" shape="round">
+              <ion-button expand="block" shape="round" (click)="Login(username, password)">
                 Login
               </ion-button>
               <ion-item>
                 <ion-label>Ricorda Credenziali</ion-label>
                 <ion-checkbox></ion-checkbox>
               </ion-item>
+              <a href="http://localhost:8100/crm">skip per i pro browser only</a>
             </ion-card-content>
-          </ion-card-header>
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
-</ion-content>

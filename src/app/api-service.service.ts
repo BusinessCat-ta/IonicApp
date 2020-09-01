@@ -1,3 +1,4 @@
+import { Credentials } from './../models/Credentials';
 import { Opportunity } from './../models/OpportunityModel';
 import { FornitoriModel } from './../models/FornitoriModel';
 import { Task } from './../models/TaskLog';
@@ -45,5 +46,9 @@ export class ApiServiceService {
 
   getLogs(){
     return this.LogList;
+  }
+
+  logMeIn(cred: Credentials){
+    return this.http.post("http://localhost:8080/services/api/auth/login", cred);
   }
 }

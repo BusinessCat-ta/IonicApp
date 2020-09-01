@@ -12,7 +12,7 @@ const routes: Routes = [
     loadChildren: () => import('./lead-form/lead-form.module').then( m => m.LeadFormPageModule)
   },
   {
-    path: '',
+    path: 'crm',
     loadChildren: () => import('./crm-page/crm-page.module').then( m => m.CrmPagePageModule)
   },
   {
@@ -40,7 +40,7 @@ const routes: Routes = [
     loadChildren: () => import('./opportunita/opportunita.module').then( m => m.OpportunitaPageModule)
   },
   {
-    path: 'login-page',
+    path: '',
     loadChildren: () => import('./login-page/login-page.module').then( m => m.LoginPagePageModule)
   }
 ];
