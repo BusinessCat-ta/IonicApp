@@ -17,6 +17,11 @@ import { Calendar } from '@ionic-native/calendar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+export function getter(){
+  console.log("worka");
+  return localStorage.getItem('token');
+}
+
 
 @NgModule({
   declarations: [AppComponent, LogComponent],
@@ -30,10 +35,7 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: () => {
-          console.log("worka");
-          return localStorage.getItem("token")
-        },
+        tokenGetter: getter,
         allowedDomains: ["localhost/services/api"],
         disallowedRoutes: ["http://example.com/examplebadroute/"],
         throwNoTokenError: true
