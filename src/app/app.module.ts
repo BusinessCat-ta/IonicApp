@@ -23,7 +23,7 @@ export function jwtOptionsFactory(storage) {
     tokenGetter: () => {
       return storage.get('token');
     },
-    allowedDomains: ['localhost']
+    allowedDomains: ['localhost', 'localhost:8100']
   }
 }
 
