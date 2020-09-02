@@ -5,8 +5,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy, Router } from '@angular/router';
 import { CommonModule } from '@angular/common'
-import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
-import { IonicStorageModule, Storage } from '@ionic/storage';
+import { JwtModule } from '@auth0/angular-jwt';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -19,16 +18,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 
-export function jwtOptionsFactory(storage) {
-  return {
-    tokenGetter: () => {
-      return storage.get('token');
-    },
-    allowedDomains: ["http://localhost:8080/services/api/","http://localhost:8100/"]
-  }
-}
-
-
 @NgModule({
   declarations: [AppComponent, LogComponent],
   entryComponents: [],
@@ -39,16 +28,18 @@ export function jwtOptionsFactory(storage) {
     IonicModule.forRoot(), 
     AppRoutingModule,
     HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem("token");
+        },
+        allowedDomains: ["http://localhost/services/api"],
+        disallowedRoutes: ["http://example.com/examplebadroute/"],
+      },
+    }),
     FormsModule,
     BrowserModule,
-    JwtModule.forRoot({
-      jwtOptionsProvider: {
-        provide: JWT_OPTIONS,
-        useFactory: jwtOptionsFactory,
-        deps: [Storage]
-      }
-    }),
-  ],
+    ],
     
   providers: [
     StatusBar,
