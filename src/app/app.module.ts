@@ -37,14 +37,14 @@ export function jwtOptionsFactory(storage) {
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
-    IonicStorageModule.forRoot(),
+    IonicStorageModule,
     Storage,
     HttpClientModule,
     JwtModule.forRoot({
       jwtOptionsProvider: {
         provide: JWT_OPTIONS,
         useFactory: jwtOptionsFactory,
-        deps: [IonicStorageModule]
+        deps: [Storage]
       }
     }),
     FormsModule,
