@@ -1,4 +1,4 @@
-import { IonicStorageModule, Storage } from '@ionic/storage';
+import { Storage } from '@ionic/storage';
 import { LogComponent } from './log/log.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,15 +18,6 @@ import { Calendar } from '@ionic-native/calendar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-export function jwtOptionsFactory(storage) {
-  return {
-    tokenGetter: () => {
-      return storage.get('token');
-    },
-    allowedDomains: ['localhost'],
-    unallowedDomains: ['localhost:8100']
-  }
-}
 
 
 @NgModule({
@@ -40,13 +31,6 @@ export function jwtOptionsFactory(storage) {
     AppRoutingModule,
     Storage,
     HttpClientModule,
-    JwtModule.forRoot({
-      jwtOptionsProvider: {
-        provide: JWT_OPTIONS,
-        useFactory: jwtOptionsFactory,
-        deps: [Storage]
-      }
-    }),
     FormsModule,
     BrowserModule,
     ],
