@@ -24,7 +24,7 @@ export function jwtOptionsFactory(storage) {
     tokenGetter: () => {
       return storage.get('token');
     },
-    allowedDomains: ["http://localhost:8080/services/api/"]
+    allowedDomains: ["http://localhost:8080/services/api/","http://localhost:8100/"]
   }
 }
 
