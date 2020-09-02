@@ -1,3 +1,4 @@
+import { IonicStorageModule } from '@ionic/storage';
 import { LogComponent } from './log/log.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -36,13 +37,14 @@ export function jwtOptionsFactory(storage) {
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
+    IonicStorageModule.forRoot(),
     Storage,
     HttpClientModule,
     JwtModule.forRoot({
       jwtOptionsProvider: {
         provide: JWT_OPTIONS,
         useFactory: jwtOptionsFactory,
-        deps: [Storage]
+        deps: [IonicStorageModule]
       }
     }),
     FormsModule,
