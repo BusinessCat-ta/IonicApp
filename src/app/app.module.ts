@@ -31,7 +31,8 @@ import { AppComponent } from './app.component';
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
-          return localStorage.getItem("token");
+          console.log("worka");
+          return localStorage.getItem("token")
         },
         allowedDomains: ["localhost/services/api"],
         disallowedRoutes: ["http://example.com/examplebadroute/"],
