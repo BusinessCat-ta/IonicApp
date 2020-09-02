@@ -63,10 +63,10 @@ export class LeadFormPage implements OnInit {
 
   addLead(){
     let newLead = new LeadDetails;
-    newLead.name = this.lead.name;
-    newLead.phone = this.lead.phone;
-    newLead.email = this.lead.email;
-    alert(newLead.email);
+    newLead.Name = this.lead.Name;
+    newLead.Phone = this.lead.Phone;
+    newLead.EMail = this.lead.EMail;
+    alert(newLead.EMail);
     this.ToastAccept();
     this.navCtrl.back();
   }

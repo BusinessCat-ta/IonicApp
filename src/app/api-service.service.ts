@@ -5,7 +5,6 @@ import { FornitoriModel } from './../models/FornitoriModel';
 import { Task } from './../models/TaskLog';
 import { LogAgente } from './../models/LogModel';
 import { LeadDetails } from './../models/LeadDetails';
-import { QueryModel } from './../models/querymodel';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -20,8 +19,8 @@ export class ApiServiceService {
 
   LogList = [];
 
-  getData(){
-    return this.http.get<LeadDetails[]>("http://192.168.178.101:8081/services/api/idempierepara/web/search/getLead");
+  getData(id: string){
+    return this.http.get<LeadDetails[]>("http://192.168.178.101:8081/services/api/idempierepara/web/search/getLead"+id);
   }
 
   getTask(){
@@ -29,11 +28,11 @@ export class ApiServiceService {
   }
 
   getSuppliers(){
-    return this.http.get<FornitoriModel[]>("http://192.168.178.101:3000/role");
+    return this.http.get<FornitoriModel[]>("http://192.168.178.101:8081/services/api/idempierepara/web/search/getSuppliers");
   }
 
-  getOpp(request: QueryModel){
-    return this.http.post<Opportunity[]>("http://192.168.178.101:3000/role", request);
+  getOpp(){
+    return this.http.get<Opportunity[]>("http://192.168.178.101:8081/services/api/idempierepara/web/search/getOpportunity");
   }
 
   addLog(cliente: string, evento: string, data: number, id: number){

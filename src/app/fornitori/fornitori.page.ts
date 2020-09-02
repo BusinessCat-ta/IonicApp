@@ -27,14 +27,14 @@ export class FornitoriPage implements OnInit {
   }
 
   queryBuild = () => {
-    var query= new QueryModel;
     this.list = [];
-    query.column = "a.name, b.name as bpartnername, ad_user_id, email, phone, a.description, a.comments, a.lastcontact";
+    /* query.column = "a.name, b.name as bpartnername, ad_user_id, email, phone, a.description, a.comments, a.lastcontact";
     query.table = "ad_user a inner join c_bpartner b on a.c_bpartner_id = b.c_bpartner_id";
-    query.where = "a.c_bpartner_id > 0";
-    this.Api.getSuppliers(query).subscribe((data) => { 
+    query.where = "a.c_bpartner_id > 0"; */
+    this.Api.getSuppliers().subscribe((data) => { 
       this.list = data;
       this.list1 = data;
+      console.log(this.list);
     });
   }
 

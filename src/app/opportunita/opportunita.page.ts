@@ -20,15 +20,15 @@ export class OpportunitaPage implements OnInit {
   list1: Opportunity[] = [];
 
   queryBuild = () => {
-    var query= new QueryModel;
     this.list = [];
     this.list1 = [];
-    query.column = "c_bpartner_id, description, comments";
+    /* query.column = "c_bpartner_id, description, comments";
     query.table = "c_opportunity";
-    query.where = "";
-    this.Api.getOpp(query).subscribe((data) => { 
+    query.where = ""; */
+    this.Api.getOpp().subscribe((data) => { 
       this.list = data;
       this.list1 = data;
+      console.log(this.list);
     });
   }
 
