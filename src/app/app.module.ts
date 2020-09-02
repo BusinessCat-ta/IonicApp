@@ -20,7 +20,7 @@ import { AppComponent } from './app.component';
 export function jwtOptionsFactory(storage) {
   return {
     tokenGetter: () => {
-      return storage.get('access_token');
+      return storage.get('token');
     },
     allowedDomains: ['localhost']
   }
