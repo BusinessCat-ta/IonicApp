@@ -36,6 +36,7 @@ export function jwtOptionsFactory(storage) {
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
+    Storage,
     HttpClientModule,
     JwtModule.forRoot({
       jwtOptionsProvider: {
