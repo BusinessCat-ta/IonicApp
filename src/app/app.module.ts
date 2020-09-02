@@ -3,7 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy, Router } from '@angular/router';
+import { RouteReuseStrategy} from '@angular/router';
 import { CommonModule } from '@angular/common'
 import { JwtModule } from '@auth0/angular-jwt';
 
@@ -17,6 +17,10 @@ import { Calendar } from '@ionic-native/calendar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+export function tokenGetter(){
+  return localStorage.getItem('token');
+}
+
 
 @NgModule({
   declarations: [AppComponent, LogComponent],
@@ -28,18 +32,15 @@ import { AppComponent } from './app.component';
     IonicModule.forRoot(), 
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: () => {
-          return localStorage.getItem("token");
-        },
-        allowedDomains: ["http://localhost/services/api"],
+        tokenGetter: tokenGetter,
+        allowedDomains: ['192.168.178.101:8081'],
         disallowedRoutes: ["http://example.com/examplebadroute/"],
         throwNoTokenError: true
       },
-    }),
-    FormsModule,
-    BrowserModule,
+    })
     ],
     
   providers: [

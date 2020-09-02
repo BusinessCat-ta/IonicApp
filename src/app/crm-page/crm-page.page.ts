@@ -42,6 +42,7 @@ export class CrmPagePage implements OnInit{
     this.Api.getData().subscribe((data) => { 
       this.list = data;
       this.list1 = data;
+      console.log(this.list);
     });
   }
 
@@ -62,7 +63,7 @@ export class CrmPagePage implements OnInit{
   }
 
   segmentChanged(ev: any) {
-   this.list1=_.where(this.list, {leadstatus: ev.detail.value});
+   this.list1=_.where(this.list, {LeadStatus: ev.detail.value});
   }
 
   

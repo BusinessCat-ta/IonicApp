@@ -21,15 +21,15 @@ export class ApiServiceService {
   LogList = [];
 
   getData(){
-    return this.http.get<LeadDetails[]>("http://localhost:8080/services/api/idempierepara/web/search/getLead");
+    return this.http.get<LeadDetails[]>("http://192.168.178.101:8081/services/api/idempierepara/web/search/getLead");
   }
 
-  getTask(request: QueryModel){
-    return this.http.post<Task[]>("http://192.168.178.101:3000/role", request);
+  getTask(){
+    return this.http.get<Task[]>("http://192.168.178.101:8081/services/api/idempierepara/web/search/getTask");
   }
 
-  getSuppliers(request: QueryModel){
-    return this.http.post<FornitoriModel[]>("http://192.168.178.101:3000/role", request);
+  getSuppliers(){
+    return this.http.get<FornitoriModel[]>("http://192.168.178.101:3000/role");
   }
 
   getOpp(request: QueryModel){
@@ -51,6 +51,6 @@ export class ApiServiceService {
 
   logMeIn(cred: Credentials){
     console.log(cred);
-    return this.http.post<TResponse>("http://localhost:8081/services/api/auth/login", cred);
+    return this.http.post<TResponse>("http://192.168.178.101:8081/services/api/auth/login", cred);
   }
 }
