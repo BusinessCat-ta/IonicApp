@@ -35,6 +35,7 @@ import { AppComponent } from './app.component';
         },
         allowedDomains: ["http://localhost/services/api"],
         disallowedRoutes: ["http://example.com/examplebadroute/"],
+        throwNoTokenError: true
       },
     }),
     FormsModule,
