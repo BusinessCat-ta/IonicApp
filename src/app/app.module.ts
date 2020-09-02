@@ -38,7 +38,8 @@ export function getter(){
         tokenGetter: getter,
         allowedDomains: ["localhost/services/api"],
         disallowedRoutes: ["http://example.com/examplebadroute/"],
-        throwNoTokenError: true
+        throwNoTokenError: true,
+        authScheme: 'JWT'
       },
     }),
     FormsModule,
