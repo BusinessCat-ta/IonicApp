@@ -33,7 +33,7 @@ import { AppComponent } from './app.component';
         tokenGetter: () => {
           return localStorage.getItem("token");
         },
-        allowedDomains: ["http://localhost/services/api"],
+        allowedDomains: ["localhost/services/api"],
         disallowedRoutes: ["http://example.com/examplebadroute/"],
         throwNoTokenError: true
       },
