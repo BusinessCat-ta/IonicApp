@@ -36,7 +36,7 @@ export function getter(){
     JwtModule.forRoot({
       config: {
         tokenGetter: getter,
-        allowedDomains: ["localhost:8080/services/api"],
+        allowedDomains: ["localhost"],
         disallowedRoutes: ["http://example.com/examplebadroute/"],
         throwNoTokenError: true,
         authScheme: 'JWT'
