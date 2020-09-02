@@ -13,7 +13,7 @@ export class LoginPagePage implements OnInit {
 
   constructor(private Api: ApiServiceService,
               private router: Router,
-              public storage: Storage) { }
+              private storage: Storage) { }
 
   ngOnInit() {
   }
