@@ -5,7 +5,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy} from '@angular/router';
 import { CommonModule } from '@angular/common'
-import { JwtModule } from '@auth0/angular-jwt';
+import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { IonicStorageModule, Storage } from '@ionic/storage'
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -17,8 +18,15 @@ import { Calendar } from '@ionic-native/calendar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-export function tokenGetter(){
-  return localStorage.getItem('token');
+
+export function jwtOptionsFactory(storage) {
+  return {
+    tokenGetter: () => {
+      console.log(storage.get('token'));
+      return storage.get('token');
+    },
+    allowedDomains: ["192.168.178.101:8081"]
+  }
 }
 
 
@@ -33,13 +41,13 @@ export function tokenGetter(){
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    IonicStorageModule.forRoot(),
     JwtModule.forRoot({
-      config: {
-        tokenGetter: tokenGetter,
-        allowedDomains: ['192.168.178.101:8081'],
-        disallowedRoutes: ["http://example.com/examplebadroute/"],
-        throwNoTokenError: true
-      },
+      jwtOptionsProvider: {
+        provide: JWT_OPTIONS,
+        useFactory: jwtOptionsFactory,
+        deps: [Storage]
+      }
     })
     ],
     

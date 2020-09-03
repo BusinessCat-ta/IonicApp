@@ -34,11 +34,9 @@
   </ion-header>
 
   <ion-list>
-    <div *ngFor="let s of list1">
-      <ion-item  *ngIf="s.LeadStatus" button (click)="leadDet(s.id)" detail="true">
-        <ion-label>{{s.Name}}</ion-label>
-      </ion-item>
-  </div>
+    <ion-item  *ngFor="let s of list1" button (click)="leadDet(s.id)" detail="true">
+       <ion-label>{{s.Name}}</ion-label>
+    </ion-item>
   </ion-list>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">

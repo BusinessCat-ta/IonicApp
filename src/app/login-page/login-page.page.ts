@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { Credentials } from './../../models/Credentials';
 import { ApiServiceService } from './../api-service.service';
 import { Component, OnInit } from '@angular/core';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-login-page',
@@ -11,7 +12,8 @@ import { Component, OnInit } from '@angular/core';
 export class LoginPagePage implements OnInit {
 
   constructor(private Api: ApiServiceService,
-              private router: Router) { }
+              private router: Router,
+              private storage: Storage) { }
 
   ngOnInit() {
   }
@@ -22,7 +24,7 @@ export class LoginPagePage implements OnInit {
     this.cred.username = username;
     this.cred.password = password;
     this.Api.logMeIn(this.cred).subscribe((data) => {
-      localStorage.setItem("token", data.token)
+      this.storage.set('token', data.token);
       this.router.navigate(['/crm']);
     });
   }
