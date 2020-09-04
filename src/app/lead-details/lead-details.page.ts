@@ -1,5 +1,4 @@
 import { LeadDetails } from './../../models/LeadDetails';
-import { QueryModel } from './../../models/querymodel';
 import { ApiServiceService } from './../api-service.service';
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router'
@@ -76,7 +75,7 @@ export class LeadDetailsPage implements OnInit {
         icon: 'call-outline',
         handler: () => {
           this.callnumber.callNumber( this.lead.Phone , true)
-          .then(res => this.insertLog(this.lead.Name , 'Call', Date.now() , 1))
+          .then(res => this.insertLog(this.lead.id , 'Call'))
           .catch(err => console.log('Error launching dialer', err));
         }
       }, {
@@ -88,13 +87,13 @@ export class LeadDetailsPage implements OnInit {
             isHtml: true
           }
           cordova.plugins.email.open(mail);
-          this.insertLog(this.lead.Name,'Email', Date.now() , 1);
+          this.insertLog(this.lead.id,'Email');
         }
       }, {
         text: 'Aggiungi Offerta',
         icon: 'cash-outline',
         handler: () => {
-          this.router.navigate(['/descrizione/'+this.lead.Name]);
+          this.router.navigate(['/descrizione/'+this.lead.id]);
         }
       }, {
         text: 'Annulla',
@@ -134,8 +133,9 @@ export class LeadDetailsPage implements OnInit {
   }
 
 
-  insertLog(cliente: string, evento: string, data: number, id: number){
-    this.Api.addLog(cliente,evento, data, id);
+  insertLog(idc: string, evento: string,){
+    const id = parseInt(idc);
+    this.Api.addLog(id, evento);
   }
 
   

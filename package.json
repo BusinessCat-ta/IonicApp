@@ -33,6 +33,7 @@
     "@types/underscore": "^1.10.22",
     "cordova-browser": "6.0.0",
     "cordova-plugin-contacts": "^3.0.1",
+    "moment": "^2.27.0",
     "rxjs": "~6.5.1",
     "tslib": "^1.10.0",
     "underscore": "^1.10.2",

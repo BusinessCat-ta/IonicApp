@@ -1,6 +1,9 @@
 export interface FornitoriModel{
-    name: string;
-    bpartnername: string;
-    ad_user_id: number;
-    email: string;
+    Comments: null
+    Description: string
+    EMail: string
+    Name: string
+    Phone: string
+    bpartnername: string
+    id: number
 }

@@ -23,22 +23,18 @@ export class LeadFormPage implements OnInit {
     title: string;
   
   ngOnInit() {
-    /* this.route.paramMap.subscribe(param => {
+    this.route.paramMap.subscribe(param => {
       const id = param.get('id');
       if(id != 'new'){
         this.title = "Modifica";
-        var query= new QueryModel;
-        query.column = "name, email, phone";
-        query.table = "ad_user";
-        query.where = "ad_user_id = "+id;
-        this.Api.getData(query).subscribe((data) => { this.lead = data[0] });
+        this.Api.getData("_"+id).subscribe((data) => { this.lead = data[0] });
       }else{
         this.title = "Inserimento";
-        this.lead.name = "";
-        this.lead.email = "";
-        this.lead.phone = "";
+        this.lead.Name = "";
+        this.lead.EMail = "";
+        this.lead.Phone = "";
       }
-    }); */
+    });
     
   }
 

@@ -28,7 +28,8 @@ export class DescrizioneOffertaPage implements OnInit {
 
   insertDesc(desc: string){
     alert(desc);
-    this.Api.addLog(this.leadname, "Offer", Date.now(), 1);
+    const lead = parseInt(this.leadname);
+    this.Api.addLog(lead, "Offer");
     this.navCtrl.back();
   }
 
