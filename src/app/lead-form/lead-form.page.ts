@@ -28,6 +28,7 @@ export class LeadFormPage implements OnInit {
       if(id != 'new'){
         this.title = "Modifica";
         this.Api.getData("_"+id).subscribe((data) => { this.lead = data[0] });
+        console.log(this.lead);
       }else{
         this.title = "Inserimento";
         this.lead.Name = "";
@@ -57,12 +58,16 @@ export class LeadFormPage implements OnInit {
     toast.present();
   }
 
-  addLead(){
+  addLead(Leads){
     let newLead = new LeadDetails;
+    if(this.title == "Modifica"){
+      newLead.AD_User_ID = this.lead.id;
+    }
     newLead.Name = this.lead.Name;
     newLead.Phone = this.lead.Phone;
     newLead.EMail = this.lead.EMail;
-    alert(newLead.EMail);
+    newLead.LeadStatus = Leads;
+    this.Api.modifyLead(newLead);
     this.ToastAccept();
     this.navCtrl.back();
   }

@@ -11,7 +11,7 @@ import { Injectable } from '@angular/core';
 
 import * as moment from 'moment';
 
-const EndPoint = "http://192.168.178.101:8081/services/api/idempierepara/web/search/";
+const EndPoint = "http://192.168.178.101:8080/services/api/idempierepara/web/search/";
 
 
 @Injectable({
@@ -23,7 +23,6 @@ export class ApiServiceService {
               private storage: Storage) { }
 
 
-  LogList = [];
 
   getData(id: string){
     return this.http.get<LeadDetails[]>(EndPoint+"getLead"+id);
@@ -51,7 +50,7 @@ export class ApiServiceService {
     log.Description= "LOG";
     //log.StartDate = moment(time).format(format);
     log.SalesRep_ID = idA;
-    log.AD_user_ID = idA;
+    log.AD_User_ID = idA;
     log.AD_Client_ID= 1000006;
     log.C_Activity_ID = 1000010;
     log.AD_Org_ID= 1000006;
@@ -63,12 +62,26 @@ export class ApiServiceService {
     })
   }
 
-  getLogs(){
-    return this.LogList;
+  modifyLead(lead: LeadDetails){
+    console.log(lead);
+    if(lead.AD_User_ID){
+      console.log(lead);
+      this.http.put(EndPoint+"putLead_"+lead.AD_User_ID, lead).subscribe((data) => {
+        console.log(data);
+      });
+    } else {
+      this.http.post(EndPoint+"postLead", lead).subscribe((data) =>{
+        console.log(data);
+      });
+    }
+  }
+
+  getLogs(id: string){
+    return this.http.get<LogAgente>(EndPoint+"getLogs"+id);
   }
 
   logMeIn(cred: Credentials){
     console.log(cred);
-    return this.http.post<TResponse>("http://192.168.178.101:8081/services/api/auth/login", cred);
+    return this.http.post<TResponse>("http://192.168.178.101:8080/services/api/auth/login", cred);
   }
 }

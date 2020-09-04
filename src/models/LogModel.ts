@@ -1,8 +1,5 @@
-import { Timestamp } from 'rxjs';
-import { Time } from '@angular/common';
-
 export class LogAgente{
-    AD_user_ID: number;
+    AD_User_ID: number;
     LIT_AD_UserTo_ID: number;
     SalesRep_ID: number;
     Comments: string;

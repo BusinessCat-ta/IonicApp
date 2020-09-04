@@ -42,6 +42,7 @@ export class LeadDetailsPage implements OnInit {
     this.route.paramMap.subscribe(param => {
       const id = param.get('id');
         this.idLead = id;
+        this.ComponentId = this.idLead;
 /*         var query= new QueryModel;
         query.column = "name, email, phone, ad_user_id";
         query.table = "ad_user";
@@ -52,19 +53,13 @@ export class LeadDetailsPage implements OnInit {
 
   }
 
+  ComponentId: string;
+
   async opzioniContatto() {
     const actionSheet = await this.actionSheetController.create({
       header: 'Opzioni',
       cssClass: '',
       buttons: [{
-        text: 'Cancella Lead',
-        role: 'destructive',
-        icon: 'trash',
-        handler: () => {
-          this.deleteLead();
-        }
-      
-      },{
         text: 'Modifica Lead',
         icon: 'cog-outline',
         handler: () => {
@@ -90,7 +85,7 @@ export class LeadDetailsPage implements OnInit {
           this.insertLog(this.lead.id,'Email');
         }
       }, {
-        text: 'Aggiungi Offerta',
+        text: 'Inserisci Opportunità',
         icon: 'cash-outline',
         handler: () => {
           this.router.navigate(['/descrizione/'+this.lead.id]);

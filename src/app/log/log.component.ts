@@ -1,5 +1,6 @@
+import { LogAgente } from './../../models/LogModel';
 import { ApiServiceService } from './../api-service.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-log',
@@ -10,10 +11,15 @@ export class LogComponent implements OnInit {
 
   constructor( private Api: ApiServiceService) { }
 
-  logs = [];
+  @Input() id: string;
+
+  logs: LogAgente;
 
   ngOnInit() {
-    this.logs = this.Api.getLogs();
+    this.Api.getLogs("_"+this.id).subscribe((data) => {
+      this.logs = data;
+      console.log(data)
+    });
   }
 
 }

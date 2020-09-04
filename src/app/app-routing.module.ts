@@ -24,10 +24,6 @@ const routes: Routes = [
     loadChildren: () => import('./descrizione-offerta/descrizione-offerta.module').then( m => m.DescrizioneOffertaPageModule)
   },
   {
-    path: 'log-page',
-    loadChildren: () => import('./log-page/log-page.module').then( m => m.LogPagePageModule)
-  },
-  {
     path: 'task',
     loadChildren: () => import('./task/task.module').then( m => m.TaskPageModule)
   },

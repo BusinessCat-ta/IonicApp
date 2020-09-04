@@ -8,8 +8,28 @@
 </ion-header>
 
 <ion-content>
-  <ion-textarea autofocus="true" #desc></ion-textarea>
+  <ion-item>
+    <ion-label>Stato Vendita</ion-label>
+    <ion-select value="1000000" placeholder="Seleziona Stato Vendita" #salestatus>
+      <ion-select-option value="1000000">Da iniziare</ion-select-option>
+      <ion-select-option value="1000007">Da contattare</ion-select-option>
+      <ion-select-option value="1000006">Preparazione offerta</ion-select-option>
+      <ion-select-option value="1000004">Consegna offerta</ion-select-option>
+      <ion-select-option value="1000003">Da oicontattare</ion-select-option>
+      <ion-select-option value="1000002">In attesa di risposta</ion-select-option>
+      <ion-select-option value="1000005">Fare ODV</ion-select-option>
+      <ion-select-option value="1000009">Venduto</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Nome Lead</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Descrizione Opportunità</ion-label>
+    <ion-textarea #desc></ion-textarea>
+  </ion-item>
 </ion-content>
 <ion-footer>
-  <ion-button expand="full" (click)="insertDesc(desc.value)">Inserisci Offerta</ion-button>
+  <ion-button expand="full" (click)="insertDesc(desc.value, salestatus.value)">Inserisci Offerta</ion-button>
 </ion-footer>

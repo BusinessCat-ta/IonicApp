@@ -2,6 +2,7 @@ export class LeadDetails {
     Name: string;
     EMail: string;
     Phone: string;
-    id: string;
+    AD_User_ID: string;
     LeadStatus: string;
+    id: string;
 }

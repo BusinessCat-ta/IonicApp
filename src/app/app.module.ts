@@ -22,10 +22,9 @@ import { AppComponent } from './app.component';
 export function jwtOptionsFactory(storage) {
   return {
     tokenGetter: () => {
-      console.log(storage.get('token'));
       return storage.get('token');
     },
-    allowedDomains: ["192.168.178.101:8081"]
+    allowedDomains: ["192.168.178.101:8080"]
   }
 }
 

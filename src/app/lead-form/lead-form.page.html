@@ -10,7 +10,7 @@
 
 
 <ion-content>
-  <form (ngSubmit)="addLead()"> 
+  <form (ngSubmit)="addLead(Leads.value)"> 
     <ion-item>
       <ion-label position="floating">Nome Lead<ion-text color="danger">*</ion-text></ion-label>
       <ion-input required="true" [(ngModel)]="lead.Name" name="name" clearOnEdit="true"></ion-input>
@@ -39,7 +39,7 @@
       </ion-radio-group>
     </ion-list>
     <ion-list>
-      <ion-radio-group name="LeadType">
+      <ion-radio-group name="LeadType" #Leads>
         <ion-list-header>
           <ion-label>Stato del Lead<ion-text color="danger">*</ion-text></ion-label>
         </ion-list-header>
