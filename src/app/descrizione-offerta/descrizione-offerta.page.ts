@@ -30,17 +30,18 @@ export class DescrizioneOffertaPage implements OnInit {
   }
 
 
-  insertDesc(desc: string, sstage: number){
+  insertDesc(desc: string, sstage: number, time: string){
     let opp = new Opportunity;
     const lead = parseInt(this.leadid);
-    let time = new Date().toISOString().slice(0, 19).replace('T', ' ');
+    console.log(time);
+    let EndTime = time.slice(0, 19).replace('T', ' ');
     opp.Description = this.lead.Name
     opp.Comments = desc;
     opp.C_BPartner_ID = this.lead.C_BPartner_ID;
     opp.SalesRep_ID = parseInt(localStorage.getItem('ADuser'));
     opp.C_SalesStage_ID = sstage;
     opp.C_Currency_ID = 102;
-    opp.ExpectedCloseDate = time;
+    opp.ExpectedCloseDate = EndTime;
     opp.AD_Client_ID = parseInt(localStorage.getItem('ADclient'));
     this.Api.postOpp(opp);
     this.Api.addLog(lead, "Offer");

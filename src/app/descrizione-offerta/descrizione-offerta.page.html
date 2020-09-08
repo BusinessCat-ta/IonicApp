@@ -29,9 +29,13 @@
   </ion-item>
   <ion-item>
     <ion-label>Descrizione Opportunità</ion-label>
-    <ion-textarea #desc></ion-textarea>
+    <ion-textarea #desc style="height: 150px;"></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-label>Data di Chiusura</ion-label>
+    <ion-datetime #data displayFormat="DD MM YYYY" placeholder="Inserisci data" min="2019" max="2040"></ion-datetime>
   </ion-item>
 </ion-content>
 <ion-footer>
-  <ion-button expand="full" (click)="insertDesc(desc.value, salestatus.value)">Inserisci Offerta</ion-button>
+  <ion-button expand="full" (click)="insertDesc(desc.value, salestatus.value, data.value)">Inserisci Offerta</ion-button>
 </ion-footer>

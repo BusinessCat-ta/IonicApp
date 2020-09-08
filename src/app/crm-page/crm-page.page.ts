@@ -1,3 +1,4 @@
+import { Contacts } from '@ionic-native/contacts/ngx';
 import { LeadDetails } from './../../models/LeadDetails';
 import { ApiServiceService } from './../api-service.service';
 import { Component, OnInit } from '@angular/core';
@@ -52,20 +53,15 @@ export class CrmPagePage implements OnInit{
 
   importContact(){
     let newLead = new LeadDetails();
-    (navigator as any).contacts.pickContact(function(contact){
+    this.contacts.pickContact().then((contact)=> {
+      console.log(contact);
       newLead.Name = contact.name.givenName;
-      newLead.Phone = contact.phoneNumbers[0].value;
       newLead.EMail = contact.emails[0].value;
-    },function(err){
-      console.log('Error: ' + err);
-    });
-    this.saveLead(newLead);
+      newLead.Phone = contact.phoneNumbers[0].value;
+      this.Api.importLead(newLead);
+    })
   }
 
-  saveLead(lead: LeadDetails){
-    console.log(lead);
-    this.Api.importLead(lead);
-  }
 
   segmentChanged(ev: any) {
    this.list1=_.where(this.list, {LeadStatus: ev.detail.value});

@@ -13,6 +13,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { Calendar } from '@ionic-native/calendar/ngx';
+import { Contacts } from '@ionic-native/contacts/ngx'
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -66,7 +67,8 @@ export function tokenGetter() {
     SplashScreen,
     CallNumber,
     Calendar,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Contacts
   ],
   bootstrap: [AppComponent]
 })
