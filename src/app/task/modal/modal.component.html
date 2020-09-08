@@ -13,7 +13,12 @@
       <ion-card-title>{{task.Name}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      {{task.Description}}
+      <ion-item>
+        <ion-label>{{task.Description}}</ion-label>
+      </ion-item>
+      <ion-button disabled={{Bflag}} (click)="goToLead(task.LIT_AD_UserTo_ID)" expand="block" fill="clear">
+        Vai al Lead
+      </ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>

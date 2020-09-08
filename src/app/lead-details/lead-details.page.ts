@@ -1,6 +1,6 @@
 import { LeadDetails } from './../../models/LeadDetails';
 import { ApiServiceService } from './../api-service.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import {ActivatedRoute} from '@angular/router'
 import { ActionSheetController,  AlertController } from '@ionic/angular';
 import {Router} from  '@angular/router'
@@ -16,6 +16,7 @@ declare let cordova: any;
   styleUrls: ['./lead-details.page.scss'],
 })
 export class LeadDetailsPage implements OnInit {
+
 
   lead = new LeadDetails();
   idLead: string;
@@ -88,7 +89,8 @@ export class LeadDetailsPage implements OnInit {
         text: 'Inserisci Opportunità',
         icon: 'cash-outline',
         handler: () => {
-          this.router.navigate(['/descrizione/'+this.lead.id]);
+
+          this.router.navigate(['/descrizione/'+this.lead.id], {state: {lead: this.lead}});
         }
       }, {
         text: 'Annulla',

@@ -1,5 +1,4 @@
 import { LeadDetails } from './../../models/LeadDetails';
-import { QueryModel } from './../../models/querymodel';
 import { ApiServiceService } from './../api-service.service';
 import { Component, OnInit } from '@angular/core';
 import {MenuController} from '@ionic/angular'
@@ -22,7 +21,8 @@ export class CrmPagePage implements OnInit{
 
   constructor(private Api: ApiServiceService, 
               private menu: MenuController, 
-              private router: Router) { }
+              private router: Router,
+              private contacts: Contacts) { }
 
   ngOnInit(): void {
     this.queryBuild();
@@ -32,13 +32,9 @@ export class CrmPagePage implements OnInit{
     }
   }
 
-  queryBuild = () => {
-    /* var query= new QueryModel; */
+  queryBuild(){
     this.list = [];
     this.list1 = [];
-    /* query.column = "name, c_bpartner_id, ad_user_id, leadstatus, phone";
-    query.table = "ad_user";
-    query.where = "leadstatus != 'null' and issaleslead = 'Y'"; */
     this.Api.getData('').subscribe((data) => { 
       this.list = data;
       this.list1 = data;
@@ -55,15 +51,32 @@ export class CrmPagePage implements OnInit{
   }
 
   importContact(){
+    let newLead = new LeadDetails();
     (navigator as any).contacts.pickContact(function(contact){
-      console.log('The following contact has been selected:' + JSON.stringify(contact));
+      newLead.Name = contact.name.givenName;
+      newLead.Phone = contact.phoneNumbers[0].value;
+      newLead.EMail = contact.emails[0].value;
     },function(err){
       console.log('Error: ' + err);
     });
+    this.saveLead(newLead);
+  }
+
+  saveLead(lead: LeadDetails){
+    console.log(lead);
+    this.Api.importLead(lead);
   }
 
   segmentChanged(ev: any) {
    this.list1=_.where(this.list, {LeadStatus: ev.detail.value});
+  }
+
+  doRefresh(event) {
+    this.queryBuild();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
   }
 
   

@@ -19,13 +19,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 
-export function jwtOptionsFactory(storage) {
+/* export function jwtOptionsFactory(storage) {
   return {
     tokenGetter: () => {
       return storage.get('token');
     },
     allowedDomains: ["192.168.178.101:8080"]
   }
+} */
+
+export function tokenGetter() {
+  return localStorage.getItem("token");
 }
 
 
@@ -41,12 +45,19 @@ export function jwtOptionsFactory(storage) {
     HttpClientModule,
     FormsModule,
     IonicStorageModule.forRoot(),
-    JwtModule.forRoot({
+/*     JwtModule.forRoot({
       jwtOptionsProvider: {
         provide: JWT_OPTIONS,
         useFactory: jwtOptionsFactory,
         deps: [Storage]
       }
+    }) */
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["192.168.178.101:8080"],
+        disallowedRoutes: ["http://example.com/examplebadroute/"],
+      },
     })
     ],
     

@@ -1,7 +1,9 @@
+import { Opportunity } from './../../models/OpportunityModel';
+import { LeadDetails } from './../../models/LeadDetails';
 import { ActivatedRoute } from '@angular/router';
 import { ApiServiceService } from './../api-service.service';
 import { NavController } from '@ionic/angular';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-descrizione-offerta',
@@ -10,7 +12,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DescrizioneOffertaPage implements OnInit {
 
-  leadname="";
+  leadid="";
+  lead: LeadDetails = history.state.lead;
+  leadname = this.lead.Name;
 
   constructor(private navCtrl: NavController,
               private Api: ApiServiceService,
@@ -20,15 +24,25 @@ export class DescrizioneOffertaPage implements OnInit {
 
     this.route.paramMap.subscribe(param => {
       const id = param.get('id');
-      this.leadname = id;
+      this.leadid = id;
     });
 
   }
 
 
-  insertDesc(desc: string){
-    alert(desc);
-    const lead = parseInt(this.leadname);
+  insertDesc(desc: string, sstage: number){
+    let opp = new Opportunity;
+    const lead = parseInt(this.leadid);
+    let time = new Date().toISOString().slice(0, 19).replace('T', ' ');
+    opp.Description = this.lead.Name
+    opp.Comments = desc;
+    opp.C_BPartner_ID = this.lead.C_BPartner_ID;
+    opp.SalesRep_ID = parseInt(localStorage.getItem('ADuser'));
+    opp.C_SalesStage_ID = sstage;
+    opp.C_Currency_ID = 102;
+    opp.ExpectedCloseDate = time;
+    opp.AD_Client_ID = parseInt(localStorage.getItem('ADclient'));
+    this.Api.postOpp(opp);
     this.Api.addLog(lead, "Offer");
     this.navCtrl.back();
   }

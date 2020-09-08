@@ -10,8 +10,8 @@
 <ion-content scrollY="false">
   <ion-list>
     <ion-item-divider>
-      <ion-label position="stacked">
-        <h3>Nome</h3>
+      <ion-label>
+        Nome
       </ion-label>
       <ion-item>
         {{lead.Name}}
@@ -19,7 +19,7 @@
     </ion-item-divider>
     <ion-item-divider *ngIf="lead.Phone">
       <ion-label>
-        <h3>Telefono</h3>
+        Telefono
       </ion-label> 
       <ion-item>
         {{lead.Phone}}
@@ -27,7 +27,7 @@
     </ion-item-divider>
     <ion-item-divider *ngIf="lead.EMail">
       <ion-label>
-        <h3>Email</h3>
+        Email
       </ion-label> 
       <ion-item>
         {{lead.EMail}}

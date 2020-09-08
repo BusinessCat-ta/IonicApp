@@ -5,4 +5,5 @@ export interface Task{
     salesrep_id: number;
     Name: string;
     Priority: number;
+    LIT_AD_UserTo_ID: number;
 }

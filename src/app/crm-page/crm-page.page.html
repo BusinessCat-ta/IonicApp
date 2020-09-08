@@ -3,8 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>
-    </ion-title>
+    <ion-title>Leads</ion-title>
   </ion-toolbar>
   <ion-toolbar>
   
@@ -16,7 +15,7 @@
         <ion-label>Convertiti</ion-label>
       </ion-segment-button>
       <ion-segment-button value="W">
-        <ion-label>PH</ion-label>
+        <ion-label>In Corso</ion-label>
       </ion-segment-button>
       <ion-segment-button value="E">
         <ion-label>Scaduti</ion-label>
@@ -27,11 +26,9 @@
 
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Leads</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
   <ion-list>
     <ion-item  *ngFor="let s of list1" button (click)="leadDet(s.id)" detail="true">

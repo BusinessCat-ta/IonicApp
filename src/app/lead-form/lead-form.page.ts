@@ -61,12 +61,19 @@ export class LeadFormPage implements OnInit {
   addLead(Leads){
     let newLead = new LeadDetails;
     if(this.title == "Modifica"){
+      newLead.id = this.lead.id;
       newLead.AD_User_ID = this.lead.id;
+      if(Leads){
+        newLead.LeadStatus = Leads;
+      }else{
+        newLead.LeadStatus = this.lead.LeadStatus;
+      }
+    }else{
+      newLead.LeadStatus = Leads;
     }
     newLead.Name = this.lead.Name;
     newLead.Phone = this.lead.Phone;
-    newLead.EMail = this.lead.EMail;
-    newLead.LeadStatus = Leads;
+    newLead.EMail = this.lead.EMail;  
     this.Api.modifyLead(newLead);
     this.ToastAccept();
     this.navCtrl.back();
