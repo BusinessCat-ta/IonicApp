@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import * as jwt_decode from 'jwt-decode';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { trigger, transition, animate, style } from '@angular/animations'
 
 const helper = new JwtHelperService();
 
@@ -12,6 +13,17 @@ const helper = new JwtHelperService();
   selector: 'app-login-page',
   templateUrl: './login-page.page.html',
   styleUrls: ['./login-page.page.scss'],
+  animations: [
+    trigger('slideInOut', [
+      transition(':enter', [
+        style({transform: 'translateX(-100%)'}),
+        animate('200ms ease-in', style({transform: 'translateX(0%)'}))
+      ]),
+      transition(':leave', [
+        animate('200ms ease-in', style({transform: 'translateX(-100%)'}))
+      ])
+    ])
+  ]
 })
 export class LoginPagePage implements OnInit {
 
@@ -26,8 +38,10 @@ export class LoginPagePage implements OnInit {
   cred =  new Credentials;
   uName = localStorage.getItem('username');
   ip = localStorage.getItem('TargetIP');
+  visible = false;
 
   Login(password: string, rme: boolean){
+    this.ipConfig();
     this.cred.username = this.uName;
     this.cred.password = password;
     this.Api.logMeIn(this.cred).subscribe((data) => {
@@ -35,7 +49,6 @@ export class LoginPagePage implements OnInit {
         localStorage.setItem('username', this.uName);
       }
       let decoded = jwt_decode(data.token);
-      console.log(decoded);
       localStorage.setItem('token', data.token);
       localStorage.setItem('ADuser', decoded.idUser);
       this.router.navigate(['/crm']);

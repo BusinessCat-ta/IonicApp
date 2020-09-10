@@ -25,7 +25,6 @@ EndPoint = "http://"+this.IP+"/services/api/idempierepara/web/search/";
   setIP(){
     this.IP = localStorage.getItem('TargetIP'); 
     this.EndPoint = "http://"+this.IP+"/services/api/idempierepara/web/search/";
-    console.log("nuovo ip", this.IP);
   }
 
   getData(id: string){
@@ -46,7 +45,6 @@ EndPoint = "http://"+this.IP+"/services/api/idempierepara/web/search/";
   }
 
   postOpp(opp: Opportunity){
-    console.log(opp);
     this.http.post(this.EndPoint+"postOpp", opp).subscribe((data)=> {
       console.log(data);
     });
@@ -73,7 +71,6 @@ EndPoint = "http://"+this.IP+"/services/api/idempierepara/web/search/";
     log.C_Activity_ID = 1000010;
     log.Name = "-";
     log.ContactActivityType = "TA";
-    console.log(log);
     this.http.post(this.EndPoint+"postTask", log).subscribe((data)=>{
       console.log(data);
     })

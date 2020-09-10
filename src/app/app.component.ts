@@ -2,7 +2,7 @@ import { Storage } from '@ionic/storage';
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, MenuController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Calendar } from '@ionic-native/calendar/ngx';
@@ -18,7 +18,8 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private router: Router,
-    private calendar: Calendar
+    private calendar: Calendar,
+    private menu: MenuController
   ) {
     this.initializeApp();
   }
@@ -26,6 +27,7 @@ export class AppComponent {
 
   Direct(route: string){
     this.router.navigate(['/'+route]);
+    this.menu.close();
   }
 
   openCalendar(){
@@ -44,5 +46,6 @@ export class AppComponent {
     localStorage.removeItem('token');
     localStorage.removeItem('ADuser');
     this.router.navigate(['']);
+    this.menu.close();
   }
 }
