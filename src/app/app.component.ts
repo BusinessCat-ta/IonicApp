@@ -1,5 +1,4 @@
 import { Storage } from '@ionic/storage';
-import { LogAgente } from './../models/LogModel';
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 
@@ -19,8 +18,7 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private router: Router,
-    private calendar: Calendar,
-    private storage: Storage
+    private calendar: Calendar
   ) {
     this.initializeApp();
   }
@@ -43,7 +41,8 @@ export class AppComponent {
   }
 
   LogOut(){
-    this.storage.remove('token');
+    localStorage.removeItem('token');
+    localStorage.removeItem('ADuser');
     this.router.navigate(['']);
   }
 }

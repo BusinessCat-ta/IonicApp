@@ -10,8 +10,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 
-const EndPoint = "http://192.168.178.101:8080/services/api/idempierepara/web/search/";
-
 
 @Injectable({
   providedIn: 'root'
@@ -21,28 +19,35 @@ export class ApiServiceService {
   constructor(private http: HttpClient,
               private storage: Storage) { }
 
+IP = localStorage.getItem('TargetIP'); 
+EndPoint = "http://"+this.IP+"/services/api/idempierepara/web/search/";
 
+  setIP(){
+    this.IP = localStorage.getItem('TargetIP'); 
+    this.EndPoint = "http://"+this.IP+"/services/api/idempierepara/web/search/";
+    console.log("nuovo ip", this.IP);
+  }
 
   getData(id: string){
-    return this.http.get<LeadDetails[]>(EndPoint+"getLead"+id);
+    return this.http.get<LeadDetails[]>(this.EndPoint+"getLead"+id);
   }
 
   getTask(){
     let id = localStorage.getItem('ADuser');
-    return this.http.get<Task[]>(EndPoint+"getTask_"+id);
+    return this.http.get<Task[]>(this.EndPoint+"getTask_"+id);
   }
 
   getSuppliers(){
-    return this.http.get<FornitoriModel[]>(EndPoint+"getSuppliers");
+    return this.http.get<FornitoriModel[]>(this.EndPoint+"getSuppliers");
   }
 
   getOpp(){
-    return this.http.get<Opportunity[]>(EndPoint+"getOpportunity");
+    return this.http.get<Opportunity[]>(this.EndPoint+"getOpportunity");
   }
 
   postOpp(opp: Opportunity){
     console.log(opp);
-    this.http.post(EndPoint+"postOpp", opp).subscribe((data)=> {
+    this.http.post(this.EndPoint+"postOpp", opp).subscribe((data)=> {
       console.log(data);
     });
   }
@@ -50,8 +55,7 @@ export class ApiServiceService {
   importLead(lead: LeadDetails){
     lead.IsSalesLead = 'Y';
     lead.LeadStatus = 'N';
-    lead.AD_Client_ID = parseInt(localStorage.getItem('ADclient'));
-    return this.http.post(EndPoint+"postLead", lead).subscribe((data)=>{
+    return this.http.post(this.EndPoint+"postLead", lead).subscribe((data)=>{
       console.log(data);
     });
   }
@@ -66,13 +70,11 @@ export class ApiServiceService {
     log.Description= "LOG";
     log.SalesRep_ID = idA;
     log.AD_User_ID = idA;
-    log.AD_Client_ID= adclient;
     log.C_Activity_ID = 1000010;
-    log.AD_Org_ID= orgid;
     log.Name = "-";
     log.ContactActivityType = "TA";
     console.log(log);
-    this.http.post(EndPoint+"postTask", log).subscribe((data)=>{
+    this.http.post(this.EndPoint+"postTask", log).subscribe((data)=>{
       console.log(data);
     })
   }
@@ -82,23 +84,22 @@ export class ApiServiceService {
     lead.IsSalesLead = 'Y';
     if(lead.AD_User_ID){
       console.log(lead);
-      this.http.put(EndPoint+"putLead_"+lead.AD_User_ID, lead).subscribe((data) => {
+      this.http.put(this.EndPoint+"putLead_"+lead.AD_User_ID, lead).subscribe((data) => {
         console.log(data);
       });
     } else {
-      lead.AD_Client_ID= parseInt(localStorage.getItem('ADclient'))
-      this.http.post(EndPoint+"postLead", lead).subscribe((data) =>{
+      this.http.post(this.EndPoint+"postLead", lead).subscribe((data) =>{
         console.log(data);
       });
     }
   }
 
   getLogs(id: string){
-    return this.http.get<LogAgente>(EndPoint+"getLogs"+id);
+    return this.http.get<LogAgente>(this.EndPoint+"getLogs"+id);
   }
 
   logMeIn(cred: Credentials){
     console.log(cred);
-    return this.http.post<TResponse>("http://192.168.178.101:8080/services/api/auth/login", cred);
+    return this.http.post<TResponse>("http://"+this.IP+"/services/api/auth/login", cred);
   }
 }

@@ -1,5 +1,5 @@
 export interface Task{
-    ad_client_id: number;
+    AD_Client_ID: number;
     Description: string;
     ad_user_id: number;
     salesrep_id: number;

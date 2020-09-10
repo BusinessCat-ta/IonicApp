@@ -8,21 +8,29 @@
             <ion-card-content>
               <ion-item>
                 <ion-label position="floating">Username</ion-label>
-                <ion-input type="text" inputmode="email" #username></ion-input>
+                <ion-input type="text" inputmode="email" [(ngModel)]="uName"></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Password</ion-label>
                 <ion-input type="password" #password></ion-input>
               </ion-item>
-              <ion-button expand="block" shape="round" (click)="Login(username.value, password.value)">
+              <ion-button expand="block" shape="round" (click)="Login(password.value, RememberMe.checked)">
                 Login
               </ion-button>
               <ion-item>
-                <ion-label>Ricorda Credenziali</ion-label>
-                <ion-checkbox></ion-checkbox>
+                <ion-label>Ricorda Username</ion-label>
+                <ion-checkbox #RememberMe checked="{{uName}}"></ion-checkbox>
               </ion-item>
             </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
+<ion-footer>
+  <ion-toolbar>
+    <ion-input type="text" placeholder="192.168.178.101:8080" [(ngModel)]="ip"></ion-input>
+    <ion-button (click)="ipConfig()" size="small" shape="round">
+      <ion-icon name="checkmark-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

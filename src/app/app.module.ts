@@ -33,6 +33,10 @@ export function tokenGetter() {
   return localStorage.getItem("token");
 }
 
+/* export const whitelistedDomains = [new RegExp('(173.249.60.71)(:+)([0-9]+)')];
+export function jwtOptionsFactory() { return { tokenGetter: tokenGetter, whitelistedDomains: whitelistedDomains }; }
+ */
+
 
 @NgModule({
   declarations: [AppComponent, LogComponent],
@@ -56,7 +60,7 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ["192.168.178.101:8080"],
+        allowedDomains: [new RegExp('(173.249.60.71)(:+)([0-9]+)')],
         disallowedRoutes: ["http://example.com/examplebadroute/"],
       },
     })

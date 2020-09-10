@@ -42,7 +42,6 @@ export class DescrizioneOffertaPage implements OnInit {
     opp.C_SalesStage_ID = sstage;
     opp.C_Currency_ID = 102;
     opp.ExpectedCloseDate = EndTime;
-    opp.AD_Client_ID = parseInt(localStorage.getItem('ADclient'));
     this.Api.postOpp(opp);
     this.Api.addLog(lead, "Offer");
     this.navCtrl.back();
