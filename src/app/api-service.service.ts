@@ -95,8 +95,14 @@ EndPoint = "http://"+this.IP+"/services/api/idempierepara/web/search/";
     return this.http.get<LogAgente>(this.EndPoint+"getLogs"+id);
   }
 
+  isTaskComplete(task){
+    return this.http.post(this.EndPoint+"putTask_"+task.id , task);
+  }
+
   logMeIn(cred: Credentials){
     console.log(cred);
     return this.http.post<TResponse>("http://"+this.IP+"/services/api/auth/login", cred);
   }
+
+  
 }

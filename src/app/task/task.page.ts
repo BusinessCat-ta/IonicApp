@@ -47,7 +47,14 @@ export class TaskPage implements OnInit {
         task: this.task
       }
     })
+
+    modal.onDidDismiss().then(_=> {
+      this.queryBuild();
+    })
+
     await modal.present();
   }
+
+  
 
 }

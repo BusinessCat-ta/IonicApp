@@ -19,6 +19,9 @@
       <ion-button disabled={{Bflag}} (click)="goToLead(task.LIT_AD_UserTo_ID)" expand="block" fill="clear">
         Vai al Lead
       </ion-button>
+      <ion-button (click)="taskCompleted()" expand="block" fill="clear" shape="round" text="green">
+        Segna come completata
+      </ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>

@@ -1,3 +1,4 @@
+import { ApiServiceService } from './../../api-service.service';
 import { Router } from '@angular/router';
 import { Task } from './../../../models/TaskLog';
 import { ModalController } from '@ionic/angular';
@@ -15,7 +16,8 @@ export class ModalComponent implements OnInit {
   Bflag = false
 
   constructor(private ModalCtrl: ModalController,
-              private router: Router) { }
+              private router: Router,
+              private Api: ApiServiceService) { }
 
   async closeModal(){
     this.ModalCtrl.dismiss();
@@ -32,4 +34,13 @@ export class ModalComponent implements OnInit {
     this.closeModal();
   }
 
+  taskCompleted(){
+    let completed = {
+      id : this.task.id,
+      IsComplete : 'Y'
+    }
+    this.Api.isTaskComplete(completed).subscribe(_=> {
+      this.closeModal();
+    })
+  }
 }
