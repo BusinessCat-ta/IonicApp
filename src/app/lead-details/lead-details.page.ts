@@ -71,7 +71,7 @@ export class LeadDetailsPage implements OnInit {
         icon: 'call-outline',
         handler: () => {
           this.callnumber.callNumber( this.lead.Phone , true)
-          .then(res => this.insertLog(this.lead.id , 'Call'))
+          .then(res => this.insertLog(this.lead.id , 'Call', 'PC'))
           .catch(err => console.log('Error launching dialer', err));
         }
       }, {
@@ -83,7 +83,7 @@ export class LeadDetailsPage implements OnInit {
             isHtml: true
           }
           cordova.plugins.email.open(mail);
-          this.insertLog(this.lead.id,'Email');
+          this.insertLog(this.lead.id,'Email', 'EM');
         }
       }, {
         text: 'Inserisci Opportunità',
@@ -130,9 +130,9 @@ export class LeadDetailsPage implements OnInit {
   }
 
 
-  insertLog(idc: string, evento: string,){
+  insertLog(idc: string, evento: string, act: string){
     const id = parseInt(idc);
-    this.Api.addLog(id, evento);
+    this.Api.addLog(id, evento, act);
   }
 
   

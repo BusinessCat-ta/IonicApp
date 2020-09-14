@@ -5,4 +5,5 @@ export interface Task{
     Priority: number;
     LIT_AD_UserTo_ID: number;
     id: number;
+    AD_User_ID: number;
 }

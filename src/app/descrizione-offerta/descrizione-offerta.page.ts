@@ -30,7 +30,7 @@ export class DescrizioneOffertaPage implements OnInit {
   }
 
 
-  insertDesc(desc: string, sstage: number, time: string){
+  insertDesc(desc: string, sstage: number, time: string, money: string, prob: string){
     let opp = new Opportunity;
     const lead = parseInt(this.leadid);
     console.log(time);
@@ -41,9 +41,15 @@ export class DescrizioneOffertaPage implements OnInit {
     opp.SalesRep_ID = parseInt(localStorage.getItem('ADuser'));
     opp.C_SalesStage_ID = sstage;
     opp.C_Currency_ID = 102;
+    opp.Probability = prob.toString();
     opp.ExpectedCloseDate = EndTime;
-    this.Api.postOpp(opp);
-    this.Api.addLog(lead, "Offer");
+    opp.OpportunityAmt = money;
+
+    console.log(opp);
+    this.Api.postOpp(opp).subscribe((data) => {
+      console.log(data);
+      this.Api.addLog(lead, "Offer", 'OP');
+    })
     this.navCtrl.back();
   }
 

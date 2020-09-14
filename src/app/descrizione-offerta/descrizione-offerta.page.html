@@ -7,36 +7,49 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-item>
-    <ion-label>Stato Vendita</ion-label>
-    <ion-select value="1000000" placeholder="Seleziona Stato Vendita" #salestatus>
-      <ion-select-option value="1000000">Da iniziare</ion-select-option>
-      <ion-select-option value="1000007">Da contattare</ion-select-option>
-      <ion-select-option value="1000006">Preparazione offerta</ion-select-option>
-      <ion-select-option value="1000004">Consegna offerta</ion-select-option>
-      <ion-select-option value="1000003">Da oicontattare</ion-select-option>
-      <ion-select-option value="1000002">In attesa di risposta</ion-select-option>
-      <ion-select-option value="1000005">Fare ODV</ion-select-option>
-      <ion-select-option value="1000009">Venduto</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <ion-item>
-    <ion-label>Nome Lead</ion-label>
-    <ion-text>
-      {{leadname}}
-    </ion-text>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Descrizione Opportunità</ion-label>
-    <br>
-    <ion-textarea #desc style="height: 150px;"></ion-textarea>
-  </ion-item>
-  <ion-item>
-    <ion-label>Data di Chiusura</ion-label>
-    <ion-datetime #data displayFormat="DD MM YYYY" placeholder="Inserisci data" min="2019" max="2040"></ion-datetime>
-  </ion-item>
+
+
+ <ion-content>
+  <form (ngSubmit)="insertDesc(desc.value, salestatus.value, data.value, oppAmm.value, prob.value)">
+    <ion-item>
+      <ion-label>Stato Vendita</ion-label>
+      <ion-select value="1000000" placeholder="Seleziona Stato Vendita" #salestatus>
+        <ion-select-option value="1000000">Da iniziare</ion-select-option>
+        <ion-select-option value="1000007">Da contattare</ion-select-option>
+        <ion-select-option value="1000006">Preparazione offerta</ion-select-option>
+        <ion-select-option value="1000004">Consegna offerta</ion-select-option>
+        <ion-select-option value="1000003">Da oicontattare</ion-select-option>
+        <ion-select-option value="1000002">In attesa di risposta</ion-select-option>
+        <ion-select-option value="1000005">Fare ODV</ion-select-option>
+        <ion-select-option value="1000009">Venduto</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Nome Lead</ion-label>
+      <ion-text>
+        {{leadname}}
+      </ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Descrizione Opportunità</ion-label>
+      <br>
+      <ion-textarea #desc style="height: 150px;" required></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Data di Chiusura</ion-label>
+      <ion-datetime required #data displayFormat="DD MM YYYY" placeholder="Inserisci data" min="2019" max="2040"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Importo Atteso</ion-label>
+      <ion-input type="number" placeholder="00.00" #oppAmm></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Probabilità</ion-label>
+      <ion-range min="0" max="100" step="5" snaps="true" color="secondary" pin="true" #prob></ion-range>
+    </ion-item>
+    <ion-footer>
+      <ion-button expand="full" type="submit" >Inserisci Offerta</ion-button>
+    </ion-footer>
+  </form>
 </ion-content>
-<ion-footer>
-  <ion-button expand="full" (click)="insertDesc(desc.value, salestatus.value, data.value)">Inserisci Offerta</ion-button>
-</ion-footer>
+

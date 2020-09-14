@@ -45,9 +45,7 @@ EndPoint = "http://"+this.IP+"/services/api/idempierepara/web/search/";
   }
 
   postOpp(opp: Opportunity){
-    this.http.post(this.EndPoint+"postOpp", opp).subscribe((data)=> {
-      console.log(data);
-    });
+    return this.http.post(this.EndPoint+"postOpp", opp);
   }
 
   importLead(lead: LeadDetails){
@@ -58,19 +56,20 @@ EndPoint = "http://"+this.IP+"/services/api/idempierepara/web/search/";
     });
   }
 
-  addLog(cliente: number, evento: string,){
+  addLog(cliente: number, evento: string, act: string){
     const idA = parseInt(localStorage.getItem('ADuser'));
     const adclient = parseInt(localStorage.getItem('ADclient'));
     const orgid = parseInt(localStorage.getItem('OrgId'));
     let log = new LogAgente();
-    log.LIT_AD_UserTo_ID = cliente;
+    log.LIT_AD_UserFrom_ID = idA;
     log.Comments = evento;
     log.Description= "LOG";
     log.SalesRep_ID = idA;
-    log.AD_User_ID = idA;
+    log.AD_User_ID = cliente;
     log.C_Activity_ID = 1000010;
     log.Name = "-";
-    log.ContactActivityType = "TA";
+    log.ContactActivityType = act;
+    console.log(log);
     this.http.post(this.EndPoint+"postTask", log).subscribe((data)=>{
       console.log(data);
     })
@@ -92,7 +91,7 @@ EndPoint = "http://"+this.IP+"/services/api/idempierepara/web/search/";
   }
 
   getLogs(id: string){
-    return this.http.get<LogAgente>(this.EndPoint+"getLogs"+id);
+    return this.http.get<LogAgente[]>(this.EndPoint+"getLogs"+id);
   }
 
   isTaskComplete(task){

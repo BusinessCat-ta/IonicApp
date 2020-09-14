@@ -8,4 +8,6 @@ export class LeadDetails {
     IsSalesLead: string;
     C_BPartner_ID: number;
     AD_Client_ID: number;
+    Description: string;
+    
 }
