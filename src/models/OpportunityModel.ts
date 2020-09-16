@@ -7,4 +7,6 @@ export class Opportunity{
     ExpectedCloseDate: string;
     C_BPartner_ID: number;
     C_Currency_ID: number;
+    OpportunityAmt: string;
+    Probability: string;
 }

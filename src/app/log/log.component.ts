@@ -2,6 +2,8 @@ import { LogAgente } from './../../models/LogModel';
 import { ApiServiceService } from './../api-service.service';
 import { Component, OnInit, Input } from '@angular/core';
 
+import * as _ from 'underscore';
+
 @Component({
   selector: 'app-log',
   templateUrl: './log.component.html',
@@ -13,12 +15,14 @@ export class LogComponent implements OnInit {
 
   @Input() id: string;
 
-  logs: LogAgente;
+  logs: LogAgente [] = [];
+  logs1: LogAgente[] = [];
 
   ngOnInit() {
     this.Api.getLogs("_"+this.id).subscribe((data) => {
       this.logs = data;
-      console.log(data)
+      this.logs1 = _.sortBy(this.logs, x => -x.StartDate)
+      console.log(data);
     });
   }
 

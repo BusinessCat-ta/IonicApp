@@ -1,6 +1,6 @@
 export class LogAgente{
     AD_User_ID: number;
-    LIT_AD_UserTo_ID: number;
+    LIT_AD_UserFrom_ID: number;
     SalesRep_ID: number;
     Comments: string;
     Description: string;

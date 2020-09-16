@@ -1,7 +1,10 @@
 {
-    "EMail": "",
-    "IsSalesLead": "Y",
-    "LeadStatus": "N",
-    "Name": "noADClient",
-    "Phone": ""
+    "C_BPartner_ID": 1000834,
+    "C_Currency_ID": 102,
+    "C_SalesStage_ID": "1000000",
+    "Comments": "**TEST**",
+    "Description": "Ercolano Orlando",
+    "ExpectedCloseDate": "2022-09-03 23:19:26",
+    "OpportunityAmt": "125.86",
+    "SalesRep_ID": 1000149
 }

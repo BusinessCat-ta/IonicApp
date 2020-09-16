@@ -38,7 +38,17 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./login-page/login-page.module').then( m => m.LoginPagePageModule)
+  },
+  {
+    path: 'produzione',
+    loadChildren: () => import('./produzione/produzione.module').then( m => m.ProduzionePageModule)
+  },
+  {
+    path: 'landing-page',
+    loadChildren: () => import('./landing-page/landing-page.module').then( m => m.LandingPagePageModule)
   }
+
+
 ];
 @NgModule({
   imports: [

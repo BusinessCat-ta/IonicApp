@@ -1,11 +1,14 @@
 <ion-content scrollX="true">
   <ion-list>
-    <ion-item *ngFor="let l of logs">
-      <ion-icon *ngIf="l.Comments == 'Call'" name="call-sharp"></ion-icon>
-      <ion-icon *ngIf="l.Comments == 'Email'" name="mail-sharp"></ion-icon>
-      <ion-icon *ngIf="l.Comments == 'Offer'" name="cash-outline"></ion-icon>
-      &nbsp;
-      <p>{{l.StartDate | date : 'short'}}</p>
+    <ion-item *ngFor="let l of logs1">
+      <ion-label>
+        <ion-icon *ngIf="l.Comments == 'Call'" name="call-sharp"></ion-icon>
+        <ion-icon *ngIf="l.Comments == 'Email'" name="mail-sharp"></ion-icon>
+        <ion-icon *ngIf="l.Comments == 'Offer'" name="cash-outline"></ion-icon>
+      </ion-label>
+      <ion-text>
+        {{l.StartDate | date : 'short'}}
+      </ion-text>
     </ion-item>
   </ion-list>
 </ion-content>

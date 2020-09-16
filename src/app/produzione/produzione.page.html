@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Produzione</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-text>
+    Inserici il numero del codice di produzione
+  </ion-text>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="2">
+        <ion-button (click)="scanCode()" expand="block">
+          <ion-icon name="camera-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="8">
+        <ion-input type="text" placeholder="TST/20/001" [(ngModel)]="prodCode"></ion-input>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button (click)="goToList()" expand="block">
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <app-distinta (getDistinta)="showDist($event)"></app-distinta>  
+</ion-content>

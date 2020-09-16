@@ -14,7 +14,7 @@ export class DescrizioneOffertaPage implements OnInit {
 
   leadid="";
   lead: LeadDetails = history.state.lead;
-  leadname = this.lead.Name;
+  leadname = this.lead.lead_name;
 
   constructor(private navCtrl: NavController,
               private Api: ApiServiceService,
@@ -30,20 +30,26 @@ export class DescrizioneOffertaPage implements OnInit {
   }
 
 
-  insertDesc(desc: string, sstage: number, time: string){
+  insertDesc(desc: string, sstage: number, time: string, money: string, prob: string){
     let opp = new Opportunity;
     const lead = parseInt(this.leadid);
     console.log(time);
     let EndTime = time.slice(0, 19).replace('T', ' ');
-    opp.Description = this.lead.Name
+    opp.Description = this.lead.lead_name
     opp.Comments = desc;
     opp.C_BPartner_ID = this.lead.C_BPartner_ID;
     opp.SalesRep_ID = parseInt(localStorage.getItem('ADuser'));
     opp.C_SalesStage_ID = sstage;
     opp.C_Currency_ID = 102;
+    opp.Probability = prob.toString();
     opp.ExpectedCloseDate = EndTime;
-    this.Api.postOpp(opp);
-    this.Api.addLog(lead, "Offer");
+    opp.OpportunityAmt = money;
+
+    console.log(opp);
+    this.Api.postOpp(opp).subscribe((data) => {
+      console.log(data);
+      this.Api.addLog(lead, "Offer", 'OP');
+    })
     this.navCtrl.back();
   }
 
