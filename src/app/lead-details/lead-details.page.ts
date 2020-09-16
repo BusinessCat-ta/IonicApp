@@ -44,10 +44,6 @@ export class LeadDetailsPage implements OnInit {
       const id = param.get('id');
         this.idLead = id;
         this.ComponentId = this.idLead;
-/*         var query= new QueryModel;
-        query.column = "name, email, phone, ad_user_id";
-        query.table = "ad_user";
-        query.where = "ad_user_id = "+id; */
         this.Api.getData('_'+this.idLead).subscribe((data) => { this.lead = data[0] });
     });
 

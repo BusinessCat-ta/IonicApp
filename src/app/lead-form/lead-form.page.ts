@@ -27,7 +27,10 @@ export class LeadFormPage implements OnInit {
       const id = param.get('id');
       if(id != 'new'){
         this.title = "Modifica";
-        this.Api.getData("_"+id).subscribe((data) => { this.lead = data[0] });
+        this.Api.getData("_"+id).subscribe((data) => { 
+          this.lead = data[0];
+          this.lead.Name = this.lead.lead_name;
+         });
         console.log(this.lead);
       }else{
         this.title = "Inserimento";

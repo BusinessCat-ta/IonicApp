@@ -24,7 +24,7 @@ export class ModalComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(!this.task.AD_User_ID){
+    if(!this.task.activity_ad_user_id){
       this.Bflag = true;
     }
   }

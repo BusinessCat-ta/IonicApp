@@ -56,7 +56,6 @@ export class CrmPagePage implements OnInit{
     this.contacts.pickContact().then((contact)=> {
       console.log(contact);
       newLead.Name = contact.name.givenName;
-      newLead.EMail = contact.emails[0].value;
       newLead.Phone = contact.phoneNumbers[0].value;
       this.Api.importLead(newLead);
     })
@@ -64,7 +63,7 @@ export class CrmPagePage implements OnInit{
 
 
   segmentChanged(ev: any) {
-   this.list1=_.where(this.list, {LeadStatus: ev.detail.value});
+   this.list1=_.where(this.list, {leadstatus_value: ev.detail.value});
   }
 
   doRefresh(event) {

@@ -1,6 +1,5 @@
 import { Opportunity } from './../../models/OpportunityModel';
 import { ApiServiceService } from './../api-service.service';
-import { QueryModel } from './../../models/querymodel';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -22,9 +21,6 @@ export class OpportunitaPage implements OnInit {
   queryBuild = () => {
     this.list = [];
     this.list1 = [];
-    /* query.column = "c_bpartner_id, description, comments";
-    query.table = "c_opportunity";
-    query.where = ""; */
     this.Api.getOpp().subscribe((data) => { 
       this.list = data;
       this.list1 = data;

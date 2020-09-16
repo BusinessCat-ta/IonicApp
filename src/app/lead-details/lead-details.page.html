@@ -9,30 +9,42 @@
 
 <ion-content scrollY="false">
   <ion-list>
-    <ion-item-divider>
-      <ion-label>
-        Nome
-      </ion-label>
-      <ion-item>
-        {{lead.Name}}
-      </ion-item>   
-    </ion-item-divider>
-    <ion-item-divider *ngIf="lead.Phone">
-      <ion-label>
-        Telefono
-      </ion-label> 
-      <ion-item>
+    <ion-item>
+      <ion-label>Nome</ion-label>
+      <ion-text>
+        {{lead.lead_name}}
+      </ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Telefono</ion-label>
+      <ion-text>
         {{lead.Phone}}
-      </ion-item>     
-    </ion-item-divider>
-    <ion-item-divider *ngIf="lead.EMail">
-      <ion-label>
-        Email
-      </ion-label> 
-      <ion-item>
+      </ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-text>
         {{lead.EMail}}
-      </ion-item>     
-    </ion-item-divider>
+      </ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Stato Lead</ion-label>
+      <ion-text>
+        {{lead.leadstatus_name}}
+      </ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Agente</ion-label>
+      <ion-text>
+        {{lead.SalesRep_Name}}
+      </ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Campagna</ion-label>
+      <ion-text>
+        {{lead.campaign_name}}
+      </ion-text>
+    </ion-item>
   </ion-list>
   <app-log [id]='ComponentId'></app-log>
 </ion-content>

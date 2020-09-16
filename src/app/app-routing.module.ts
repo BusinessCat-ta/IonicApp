@@ -42,7 +42,12 @@ const routes: Routes = [
   {
     path: 'produzione',
     loadChildren: () => import('./produzione/produzione.module').then( m => m.ProduzionePageModule)
+  },
+  {
+    path: 'landing-page',
+    loadChildren: () => import('./landing-page/landing-page.module').then( m => m.LandingPagePageModule)
   }
+
 
 ];
 @NgModule({

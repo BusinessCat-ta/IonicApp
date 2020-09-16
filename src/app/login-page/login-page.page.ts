@@ -51,13 +51,13 @@ export class LoginPagePage implements OnInit {
       let decoded = jwt_decode(data.token);
       localStorage.setItem('token', data.token);
       localStorage.setItem('ADuser', decoded.idUser);
-      this.router.navigate(['/crm']);
+      this.router.navigate(['/landing-page']);
     });
   }
 
   keepLogged(){
     if(!helper.isTokenExpired(localStorage.getItem('token'))){
-      this.router.navigateByUrl('/crm');
+      this.router.navigateByUrl('/landing-page');
     }
   }
 

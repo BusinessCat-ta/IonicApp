@@ -1,3 +1,4 @@
+import { MenuItem } from './../models/Menu';
 import { Storage } from '@ionic/storage';
 import { TResponse } from './../models/TokenResponse';
 import { Credentials } from './../models/Credentials';
@@ -25,6 +26,10 @@ EndPoint = "http://"+this.IP+"/services/api/idempierepara/web/search/";
   setIP(){
     this.IP = localStorage.getItem('TargetIP'); 
     this.EndPoint = "http://"+this.IP+"/services/api/idempierepara/web/search/";
+  }
+
+  getMenu(){
+    return this.http.get<MenuItem>(this.EndPoint+"getMenu");
   }
 
   getData(id: string){
