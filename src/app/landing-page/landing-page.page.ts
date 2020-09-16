@@ -15,9 +15,9 @@ export class LandingPagePage implements OnInit {
   menu: MenuItem;
 
   ngOnInit() {
-    this.Api.getMenu().subscribe((data)=> {
+    /* this.Api.getMenu().subscribe((data)=> {
       this.menu = data;
-    });
+    }); */
   }
 
   goTo(link: string){

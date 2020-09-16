@@ -1,3 +1,4 @@
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { LogComponent } from './log/log.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,26 +18,15 @@ import { Calendar } from '@ionic-native/calendar/ngx';
 import { Contacts } from '@ionic-native/contacts/ngx'
 
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 
-/* export function jwtOptionsFactory(storage) {
-  return {
-    tokenGetter: () => {
-      return storage.get('token');
-    },
-    allowedDomains: ["192.168.178.101:8080"]
-  }
-} */
 
 export function tokenGetter() {
   return localStorage.getItem("token");
 }
-
-/* export const whitelistedDomains = [new RegExp('(173.249.60.71)(:+)([0-9]+)')];
-export function jwtOptionsFactory() { return { tokenGetter: tokenGetter, whitelistedDomains: whitelistedDomains }; }
- */
 
 
 @NgModule({
@@ -52,13 +42,6 @@ export function jwtOptionsFactory() { return { tokenGetter: tokenGetter, whiteli
     HttpClientModule,
     FormsModule,
     IonicStorageModule.forRoot(),
-/*     JwtModule.forRoot({
-      jwtOptionsProvider: {
-        provide: JWT_OPTIONS,
-        useFactory: jwtOptionsFactory,
-        deps: [Storage]
-      }
-    }) */
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -73,6 +56,7 @@ export function jwtOptionsFactory() { return { tokenGetter: tokenGetter, whiteli
     SplashScreen,
     CallNumber,
     Calendar,
+    BarcodeScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Contacts
   ],

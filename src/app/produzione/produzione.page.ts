@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx'
+
 
 @Component({
   selector: 'app-produzione',
@@ -7,21 +8,28 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx'
   styleUrls: ['./produzione.page.scss'],
 })
 export class ProduzionePage implements OnInit {
+  
+  @Output() getDistinta = new EventEmitter();
 
   constructor(private barcode: BarcodeScanner) { }
 
+ 
+  prodCode = "";
+  
   ngOnInit() {
   }
 
   scanCode(){
     this.barcode.scan().then(barcodeData => {
-      console.log('Barcode data', barcodeData);
-      alert(barcodeData);
-     }).catch(err => {
+      this.prodCode = barcodeData.text;
+    }).catch(err => {
          console.log('Error', err);
-     });
+    });
   }
 
+  goToList(){
+    this.getDistinta.emit(this.prodCode);
+  }
   
 
   
